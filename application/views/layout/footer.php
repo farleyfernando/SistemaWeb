@@ -1,12 +1,16 @@
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
+
+  <?php if (!$this->router->fetch_class() == 'login') :?>
+    <!-- Footer -->
+      <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Sytem Ordem <?php echo date('Y') ?>&nbsp | Developer Farley Fernando</span>
+            <span>Copyright &copy; Sytem Ordem <?php echo date('Y'); ?>&nbsp | Developer Farley Fernando</span>
           </div>
         </div>
       </footer>
       <!-- End of Footer -->
+  <?php endif; ?>
+
 
     </div>
     <!-- End of Content Wrapper -->
@@ -24,15 +28,15 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Deseja realmente sair?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body"><h6>Clique em <strong>"Sair"</strong> para encerrar sua sessão atual.</h6></div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="<?php echo base_url('login/logout'); ?>">Sair</a>
         </div>
       </div>
     </div>
@@ -52,9 +56,9 @@
   <script src="<?php echo base_url('public/js/mascaras.js'); ?>"></script>
 
 <!-- Inclusão de scripts vindo de controllers usuarios-->
-  <?php if(isset($scripts)): ?>
+  <?php if (isset($scripts)): ?>
 
-    <?php foreach($scripts as $script): ?>
+    <?php foreach ($scripts as $script): ?>
 
       <script src="<?php echo base_url('public/'.$script); ?>"></script>
 

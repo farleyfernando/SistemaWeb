@@ -49,7 +49,7 @@
                     </div>
                     <div class="col-md-3">
                       <label>Telefone</label>
-                      <input type="text" class="form-control" name="phone"  placeholder="Telefone" value="<?php echo $usuario->phone; ?>">
+                      <input type="text" class="form-control" name="phone" id="phone" placeholder="Telefone" value="<?php echo $usuario->phone; ?>">
                       <?php echo form_error('phone','<small class="form-text text-danger">','</small>'); ?>
                     </div>
                     <div class="col-md-3">

@@ -59,11 +59,11 @@ class Usuarios extends CI_Controller
         
             if($this->ion_auth->register($username, $password, $email, $additional_data, $group)){
 
-                $this->session->set_flashdata('sucesso', 'Usuário cadastrado com sucesso!');
+                $this->session->set_flashdata('sucesso', 'Usuário cadastrado com sucesso !');
 
             }else{
 
-                $this->session->set_flashdata('error', 'Erro ao cadastrar usuário!');
+                $this->session->set_flashdata('error', 'Erro ao cadastrar usuário !');
             }
             redirect('usuarios');
             
@@ -86,7 +86,7 @@ class Usuarios extends CI_Controller
     public function edit($usuario_id = null){
         if (!$usuario_id || !$this->ion_auth->user($usuario_id)->row()) {
 
-            $this->session->set_flashdata('error', 'Usuário não localizado!');
+            $this->session->set_flashdata('error', 'Usuário não localizado !');
             redirect('usuarios');
         } else {
 
@@ -137,9 +137,9 @@ class Usuarios extends CI_Controller
                         $this->ion_auth->add_to_group($perfil_usuario_post, $usuario_id); 
                     }
 
-                    $this->session->set_flashdata('sucesso', 'Atualização efetuada com sucesso!');
+                    $this->session->set_flashdata('sucesso', 'Atualização efetuada com sucesso !');
                 }else{
-                    $this->session->set_flashdata('error', 'Não foi possível efetuar a atualização!'); 
+                    $this->session->set_flashdata('error', 'Não foi possível efetuar a atualização !'); 
                 }
 
                 redirect('usuarios');
@@ -155,6 +155,31 @@ class Usuarios extends CI_Controller
                 $this->load->view('usuarios/edit');
                 $this->load->view('layout/footer');
             }
+        }
+    }
+
+    public function deletar($usuario_id = null) {
+
+        if(!$usuario_id || !$this->ion_auth->user($usuario_id)->row()){
+
+            $this->session->set_flashdata('error', 'Usuário não localizado!'); 
+            redirect('usuarios');
+        }
+
+        if($this->ion_auth->is_admin($usuario_id)){
+          
+            $this->session->set_flashdata('error', 'Solicitação negada, para excluir um usuário administrador, antes altere seu perfil !'); 
+            redirect('usuarios');
+        }
+
+        if($this->ion_auth->delete_user($usuario_id)){
+            
+            $this->session->set_flashdata('sucesso', 'Usuário excluído com sucesso !');
+            redirect('usuarios');
+        }else{
+            
+            $this->session->set_flashdata('error', 'Erro ao excluir usuário !'); 
+            redirect('usuarios');
         }
     }
 

@@ -46,17 +46,17 @@ form.user .form-control-user {
 }
 
 .alert-danger {
-    background-color: #ff0000;
+    background-color: #a50b0b;
     color: white;
 }
 
 .alert-success {
-    background-color: #93c54b;
+    background-color: #447402;
     color: white;
 }
 
 .text-success {
-    color: #93c54b !important;
+    color: #5e2605 !important;
 }
 
 .border-left-success {
