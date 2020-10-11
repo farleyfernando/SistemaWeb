@@ -8,7 +8,7 @@ class Core_model extends CI_Model{
 
         if($tabela){
             if(is_array($condicao)){
-                $this->db->where('$condicao');
+                $this->db->where($condicao);
             }
 
             return $this->db->get($tabela)->result();
@@ -23,7 +23,7 @@ class Core_model extends CI_Model{
        
         if($tabela && is_array($condicao)){
 
-            $this->db->where('$condicao');
+            $this->db->where($condicao);
             $this->db->limit(1);
 
             return $this->db->get($tabela)->row();
@@ -60,7 +60,7 @@ class Core_model extends CI_Model{
 
         if($tabela && is_array($data) && is_array($condicao)){
 
-          if($this->update($tabela, $data, $condicao)){
+          if($this->db->update($tabela, $data, $condicao)){
 
             $this->session->set_flashdata('sucesso', 'Dados salvos com sucesso!!!');
           }else{
