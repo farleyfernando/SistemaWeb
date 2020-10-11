@@ -47,6 +47,9 @@
 
   <!-- Custom scripts for all pages-->
   <script src="<?php echo base_url('js/sb-admin-2.min.js'); ?>"></script>
+  <!-- mascaras campos-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+  <script src="<?php echo base_url('public/js/mascaras.js'); ?>"></script>
 
 <!-- Inclusão de scripts vindo de controllers usuarios-->
   <?php if(isset($scripts)): ?>
