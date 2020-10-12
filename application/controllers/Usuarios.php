@@ -4,11 +4,18 @@ defined('BASEPATH') or exit('Caminho Inválido');
 
 class Usuarios extends CI_Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
+
+        if (!$this->ion_auth->logged_in()) {
+            $this->session->set_flashdata('info', 'Você precisa estar logado, favor efetuar o login!!!');
+            redirect('login');
+        }
     }
 
-    public function index(){
+    public function index()
+    {
         $data = [
             'titulo' => 'Usuários cadastrados',
 
@@ -28,8 +35,8 @@ class Usuarios extends CI_Controller
         $this->load->view('layout/footer');
     }
 
-    public function adicionar(){
-
+    public function adicionar()
+    {
         $this->form_validation->set_rules('first_name', 'nome', 'trim|required|min_length[3]|max_length[15]');
         $this->form_validation->set_rules('last_name', '', 'trim|required|min_length[5]|max_length[50]');
         $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|is_unique[users.email]');
@@ -38,36 +45,31 @@ class Usuarios extends CI_Controller
         $this->form_validation->set_rules('password', 'senha', 'required|min_length[5]|max_length[255]');
         $this->form_validation->set_rules('confirm_password', 'confirmar senha', 'matches[password]');
 
-        if($this->form_validation->run()){
-            
+        if ($this->form_validation->run()) {
             $username = $this->security->xss_clean($this->input->post('username'));
             $password = $this->security->xss_clean($this->input->post('password'));
-            $email    = $this->security->xss_clean($this->input->post('email'));
+            $email = $this->security->xss_clean($this->input->post('email'));
 
-            $additional_data = array(
+            $additional_data = [
                         'first_name' => $this->input->post('first_name'),
-                        'last_name'  => $this->input->post('last_name'),
-                        'username'   => $this->input->post('username'),
-                        'phone'      => $this->input->post('phone'),
-                        'active'     => $this->input->post('active'),
-                        );
-            $group = array($this->input->post('perfil_usuario'));
+                        'last_name' => $this->input->post('last_name'),
+                        'username' => $this->input->post('username'),
+                        'phone' => $this->input->post('phone'),
+                        'active' => $this->input->post('active'),
+                        ];
+            $group = [$this->input->post('perfil_usuario')];
 
             $additional_data = $this->security->xss_clean($additional_data);
 
             $group = $this->security->xss_clean($group);
-        
-            if($this->ion_auth->register($username, $password, $email, $additional_data, $group)){
 
+            if ($this->ion_auth->register($username, $password, $email, $additional_data, $group)) {
                 $this->session->set_flashdata('sucesso', 'Usuário cadastrado com sucesso !');
-
-            }else{
-
+            } else {
                 $this->session->set_flashdata('error', 'Erro ao cadastrar usuário !');
             }
             redirect('usuarios');
-            
-        }else{
+        } else {
             //erro de validação
 
             $data = [
@@ -77,19 +79,15 @@ class Usuarios extends CI_Controller
             $this->load->view('layout/header', $data);
             $this->load->view('usuarios/adicionar');
             $this->load->view('layout/footer');
-
         }
-
-        
     }
 
-    public function edit($usuario_id = null){
+    public function edit($usuario_id = null)
+    {
         if (!$usuario_id || !$this->ion_auth->user($usuario_id)->row()) {
-
             $this->session->set_flashdata('error', 'Usuário não localizado !');
             redirect('usuarios');
         } else {
-
             $this->form_validation->set_rules('first_name', 'nome', 'trim|required|min_length[3]|max_length[10]');
             $this->form_validation->set_rules('last_name', '', 'trim|required|min_length[5]|max_length[50]');
             $this->form_validation->set_rules('email', '', 'trim|required|valid_email|callback_email_check');
@@ -99,9 +97,8 @@ class Usuarios extends CI_Controller
             $this->form_validation->set_rules('confirm_password', 'confirmar senha', 'matches[password]');
 
             if ($this->form_validation->run()) {
-
                 $data = elements(
-                    array(
+                    [
                         'first_name',
                         'last_name',
                         'email',
@@ -109,42 +106,39 @@ class Usuarios extends CI_Controller
                         'phone',
                         'active',
                         'password',
-                    ), $this->input->post()
+                    ], $this->input->post()
                 );
-                
-        // verificação contra tentativa de introdução de codigos maliciosos no formulário limpando os formulários
-               $data = $this->security->xss_clean($data);
 
-               $password = $this->input->post('password');
+                // verificação contra tentativa de introdução de codigos maliciosos no formulário limpando os formulários
+                $data = $this->security->xss_clean($data);
 
-               //verifica se fi passado a senha
-               if(!$password){
-                unset($data['password']);
-               }
+                $password = $this->input->post('password');
 
-               if($this->ion_auth->update($usuario_id, $data)){ 
-                   
+                //verifica se fi passado a senha
+                if (!$password) {
+                    unset($data['password']);
+                }
+
+                if ($this->ion_auth->update($usuario_id, $data)) {
                     //prefil usuario verificar
 
                     $perfil_usuario_db = $this->ion_auth->get_users_groups($usuario_id)->row();
                     $perfil_usuario_post = $this->input->post('perfil_usuario');
-                    
+
                     //se o perfil for diferente atualiza o grupo
-                    if($perfil_usuario_post != $perfil_usuario_db->id){
-                       
+                    if ($perfil_usuario_post != $perfil_usuario_db->id) {
                         $this->ion_auth->remove_from_group($perfil_usuario_db->id, $usuario_id);
 
-                        $this->ion_auth->add_to_group($perfil_usuario_post, $usuario_id); 
+                        $this->ion_auth->add_to_group($perfil_usuario_post, $usuario_id);
                     }
 
                     $this->session->set_flashdata('sucesso', 'Atualização efetuada com sucesso !');
-                }else{
-                    $this->session->set_flashdata('error', 'Não foi possível efetuar a atualização !'); 
+                } else {
+                    $this->session->set_flashdata('error', 'Não foi possível efetuar a atualização !');
                 }
 
                 redirect('usuarios');
-
-            }else{
+            } else {
                 $data = [
                     'titulo' => 'Editar usuário',
                     'usuario' => $this->ion_auth->user($usuario_id)->row(),
@@ -158,32 +152,29 @@ class Usuarios extends CI_Controller
         }
     }
 
-    public function deletar($usuario_id = null) {
-
-        if(!$usuario_id || !$this->ion_auth->user($usuario_id)->row()){
-
-            $this->session->set_flashdata('error', 'Usuário não localizado!'); 
+    public function deletar($usuario_id = null)
+    {
+        if (!$usuario_id || !$this->ion_auth->user($usuario_id)->row()) {
+            $this->session->set_flashdata('error', 'Usuário não localizado!');
             redirect('usuarios');
         }
 
-        if($this->ion_auth->is_admin($usuario_id)){
-          
-            $this->session->set_flashdata('error', 'Solicitação negada, para excluir um usuário administrador, antes altere seu perfil !'); 
+        if ($this->ion_auth->is_admin($usuario_id)) {
+            $this->session->set_flashdata('error', 'Solicitação negada, para excluir um usuário administrador, antes altere seu perfil !');
             redirect('usuarios');
         }
 
-        if($this->ion_auth->delete_user($usuario_id)){
-            
+        if ($this->ion_auth->delete_user($usuario_id)) {
             $this->session->set_flashdata('sucesso', 'Usuário excluído com sucesso !');
             redirect('usuarios');
-        }else{
-            
-            $this->session->set_flashdata('error', 'Erro ao excluir usuário !'); 
+        } else {
+            $this->session->set_flashdata('error', 'Erro ao excluir usuário !');
             redirect('usuarios');
         }
     }
 
-    public function email_check($email){
+    public function email_check($email)
+    {
         $usuario_id = $this->input->post('usuario_id');
 
         if ($this->core_model->get_by_id('users', ['email' => $email, 'id!=' => $usuario_id])) {
@@ -195,18 +186,16 @@ class Usuarios extends CI_Controller
         }
     }
 
-    public function username_check($username){
-
+    public function username_check($username)
+    {
         $usuario_id = $this->input->post('usuario_id');
 
-        if($this->core_model->get_by_id('users', ['username' => $username, 'id!=' => $usuario_id])){
+        if ($this->core_model->get_by_id('users', ['username' => $username, 'id!=' => $usuario_id])) {
             $this->form_validation->set_message('username_check', 'Esse nome de usuário não está disponível');
 
             return false;
-
-        }else{
+        } else {
             return true;
-
         }
     }
 }

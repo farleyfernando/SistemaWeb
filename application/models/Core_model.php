@@ -62,10 +62,10 @@ class Core_model extends CI_Model{
 
           if($this->db->update($tabela, $data, $condicao)){
 
-            $this->session->set_flashdata('sucesso', 'Dados salvos com sucesso!!!');
+            $this->session->set_flashdata('sucesso', 'Dados atualizados com sucesso !!!');
           }else{
 
-            $this->session->set_flashdata('error', 'Erro ao atualizar dados!!!');
+            $this->session->set_flashdata('error', 'Erro ao atualizar dados !!!');
           }
 
         }else{
