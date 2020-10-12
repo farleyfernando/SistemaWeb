@@ -127,7 +127,8 @@
                     <?php echo form_error('sistema_txt_ordem_servico', '<small class="form-text text-danger">', '</small>'); ?>
                 </div>
               </div>
-                <button type="submit" class="btn btn-primary">Salvar</button>
+              <button type="submit" class="btn btn-success"><i class="far fa-save ml-1"></i>&nbsp; Salvar</button>
+                <a title="Voltar" href="<?php echo base_url('/'); ?>" class="btn btn-primary ml-2"><i class="fas fa-arrow-left"></i>&nbsp; Voltar</a>
               </form>
             </div>
           </div>
