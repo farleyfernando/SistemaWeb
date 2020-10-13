@@ -18,8 +18,14 @@ class Clientes extends CI_Controller
     {
         $data = [
             'titulo' => 'Clientes Cadastrados',
-            'scripts' => ['vendor/mask/jquery.mask.min.js'],
-            'scripts' => ['vendor/mask/app.js'],
+            'styles' => ['vendor/datatables/dataTables.bootstrap4.min.css'],
+
+            'scripts' => ['vendor/mask/jquery.mask.min.js',
+                          'vendor/datatables/jquery.dataTables.min.js',
+                          'vendor/datatables/dataTables.bootstrap4.min.js',
+                          'vendor/datatables/app.js',
+                          'vendor/mask/app.js'],
+
             'clientes' => $this->core_model->get_all('clientes'),
         ];
 
@@ -147,8 +153,8 @@ class Clientes extends CI_Controller
         $this->form_validation->set_rules('cliente_numero_endereco', '', 'trim|required|max_length[20]');
         $this->form_validation->set_rules('cliente_bairro', '', 'trim|required|max_length[45]');
         $this->form_validation->set_rules('cliente_complemento', '', 'trim|max_length[145]');
-        $this->form_validation->set_rules('cliente_cidade', '', 'trim|required|max_length[50]');
-        $this->form_validation->set_rules('cliente_estado', '', 'trim|required|exact_length[2]');
+        $this->form_validation->set_rules('cliente_cidade', '', 'trim|max_length[50]');
+        $this->form_validation->set_rules('cliente_estado', '', 'trim|exact_length[2]');
         $this->form_validation->set_rules('cliente_obs', '', 'max_length[500]');
 
         if ($this->form_validation->run()) {
@@ -364,6 +370,4 @@ class Clientes extends CI_Controller
             return true;
         }
     }
-
-
 }

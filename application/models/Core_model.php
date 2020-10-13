@@ -95,7 +95,7 @@ class Core_model extends CI_Model{
                     }
                 }
             }else{
-                $this->session->set_flashdata('sucesso','Registro excluído com sucesso!!!'); 
+                $this->session->set_flashdata('sucesso','Registro excluído com sucesso !!!'); 
             }
 
             $this->db->db_debug = true;

@@ -1,12 +1,12 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('/'); ?>">
   <div class="sidebar-brand-icon rotate-n-15">
-    <i class="fab fa-suse mr-2"></i>
+    <i class="fas fa-cat mr-2"></i>
   </div>
-  <div class="sidebar-brand-text">System Ordem <sup></sup></div>
+  <div class="sidebar-brand-text">Cat's Moda <sup></sup></div>
 </a>
 
 <!-- Divider -->
@@ -26,13 +26,19 @@
 <div class="sidebar-heading">
   Cadastros
 </div>
-
 <li class="nav-item">
-  <a title="Gerenciar Clientes" class="nav-link" href="<?php echo base_url('clientes'); ?>">
-    <i class="fas fa-users"></i>
-    <span>Clientes</span></a>
-</li>
-
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-database"></i>
+          <span>Cadastros</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Escolha a opção:</h6>
+            <a title="Gerenciar Clientes" class="collapse-item" href="<?php echo base_url('clientes'); ?>"><i class="fas fa-user-tie text-gray-900"></i>&nbsp; Clientes</a>
+            <a title="Gerenciar Fornecedores" class="collapse-item" href="<?php echo base_url('fornecedores'); ?>"><i class="fas fa-user-tag text-gray-900"></i>&nbsp;Fornecedores</a>
+          </div>
+        </div>
+      </li>
 <!-- Divider -->
 <hr class="sidebar-divider">
 

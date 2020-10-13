@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <?php echo (isset($titulo) ? '<title>System Ordem | '.$titulo.'</title>' : '<title>System Ordem</title>') ?>
+  <?php echo (isset($titulo) ? '<title>Cats Moda | '.$titulo.'</title>' : '<title>Cat"s Moda</title>') ?>
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url('public/vendor/fontawesome-free/css/all.min.css');?>" rel="stylesheet" type="text/css">
@@ -29,6 +29,8 @@
     <?php endforeach; ?>
 
     <?php endif; ?>
+
+    <script src="../public/js/cep.js"></script>
 
 </head>
 

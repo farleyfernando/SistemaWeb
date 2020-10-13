@@ -122,12 +122,12 @@
                 <div class="form-group row">
                   <div class="col-md-2">
                     <label>CEP</label>
-                    <input type="text" class="form-control cep" name="cliente_cep" placeholder="Cep" value="<?php echo set_value('cliente_cep'); ?>">
+                    <input type="text" class="form-control cep" name="cliente_cep" placeholder="Cep" value="<?php echo set_value('cliente_cep'); ?>" onblur="pesquisacep(this.value);">
                     <?php echo form_error('cliente_cep', '<small class="form-text text-danger">', '</small>'); ?>
                   </div>
                   <div class="col-md-5">
                     <label>Endereço</label>
-                    <input type="text" class="form-control" name="cliente_endereco" placeholder="Endereço" value="<?php echo set_value('cliente_endereco'); ?>">
+                    <input type="text" class="form-control" name="cliente_endereco" placeholder="Endereço" value="<?php echo set_value('cliente_endereco'); ?>" id="end">
                     <?php echo form_error('cliente_endereco', '<small class="form-text text-danger">', '</small>'); ?>
                   </div>
                   <div class="col-md-1">
@@ -137,7 +137,7 @@
                   </div>
                   <div class="col-md-4">
                     <label>Bairro</label>
-                    <input type="text" class="form-control" name="cliente_bairro" placeholder="Bairro" value="<?php echo set_value('cliente_bairro'); ?>">
+                    <input type="text" class="form-control" name="cliente_bairro" id="bairro" placeholder="Bairro" value="<?php echo set_value('cliente_bairro'); ?>">
                     <?php echo form_error('cliente_bairro', '<small class="form-text text-danger">', '</small>'); ?>
                   </div>
                   
@@ -150,12 +150,12 @@
                   </div>
                 <div class="col-md-6">
                     <label>Cidade</label>
-                    <input type="text" class="form-control" name="cliente_cidade" placeholder="Cidade" value="<?php echo set_value('cliente_cidade'); ?>">
+                    <input type="text" class="form-control" name="cliente_cidade" id="cidade" placeholder="Cidade" value="<?php echo set_value('cliente_cidade'); ?>">
                     <?php echo form_error('cliente_cidade', '<small class="form-text text-danger">', '</small>'); ?>
                   </div>
                   <div class="col-md-1">
                     <label>Esatdo</label>
-                    <input type="text" class="form-control uf" name="cliente_estado" placeholder="UF" value="<?php echo set_value('cliente_estado'); ?>">
+                    <input type="text" class="form-control uf" name="cliente_estado" id="uf" placeholder="UF" value="<?php echo set_value('cliente_estado'); ?>">
                     <?php echo form_error('cliente_estado', '<small class="form-text text-danger">', '</small>'); ?>
                   </div>
               </div>

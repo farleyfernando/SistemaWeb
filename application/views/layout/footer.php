@@ -55,6 +55,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
   <script src="<?php echo base_url('public/js/mascaras.js'); ?>"></script>
   <script src="<?php echo base_url('public/vendor/mask/app.js'); ?>"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <!-- Inclusão de scripts vindo de controllers usuarios-->
   <?php if (isset($scripts)): ?>
