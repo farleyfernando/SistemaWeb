@@ -52,6 +52,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                   <h6 class="collapse-header">Escolha a opção:</h6>
                   <a title="Gerenciar Marcas" class="collapse-item" href="<?php echo base_url('marcas'); ?>"><i class="fab fa-adn text-gray-900"></i>&nbsp;&nbsp;Marcas</a>
+                  <a title="Gerenciar categorias" class="collapse-item" href="<?php echo base_url('categorias'); ?>"><i class="fas fa-th-large text-gray-900"></i>&nbsp;&nbsp;Categorias</a>
                 </div>
               </div>
             </li>
