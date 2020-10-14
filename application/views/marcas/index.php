@@ -45,7 +45,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <a title="Cadastrar Servico" href="<?php echo base_url('servicos/adicionar'); ?>" class="btn btn-success float-right"><i class="fas fa-laptop-medical"></i></i>&nbsp; Novo</a>
+              <a title="Cadastrar Marca" href="<?php echo base_url('marcas/adicionar'); ?>" class="btn btn-success float-right"><i class="fab fa-adn"></i></i>&nbsp; Novo</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -53,31 +53,27 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Titulo Serviço</th>
-                      <th>Descrição</th>
-                      <th>Valor</th>
+                      <th>Marca</th>
                       <th class="text-center pr-2">Ativo</th>
                       <th class="text-center pr-3 no-sort">Ações</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($servicos as $servico): ?>
+                    <?php foreach ($marcas as $marca): ?>
                     <tr>
-                      <td><?php echo $servico->servico_id ?></td>
-                      <td><?php echo $servico->servico_nome ?></td>
-                      <td><?php echo word_limiter($servico->servico_descricao, 10); ?></td>
-                      <td><?php echo 'R$ '.$servico->servico_preco ?></td>
-
-                      <td class="text-center"><?php echo ($servico->servico_ativo == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-secondary btn-sm">Não</span>') ?></td> 
+                      <td><?php echo $marca->marca_id ?></td>
+                      <td><?php echo $marca->marca_nome ?></td>
+                    
+                      <td class="text-center"><?php echo ($marca->marca_ativa == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-secondary btn-sm">Não</span>') ?></td> 
 
                       <td class="text-center pr-1">
-                        <a title="Editar Serviços" href="<?php echo base_url('servicos/editar/'.$servico->servico_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
-                        <a title="Excluir Usuário"href="javascript(void)" data-toggle="modal" data-target="#servico-<?php echo $servico->servico_id; ?>"class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>
+                        <a title="Editar Marca" href="<?php echo base_url('marcas/editar/'.$marca->marca_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
+                        <a title="Excluir Usuário"href="javascript(void)" data-toggle="modal" data-target="#marca-<?php echo $marca->marca_id; ?>"class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>
                       </td> 
                       
                     </tr> 
                       <!-- Confirma exclusão Modal-->
-                      <div class="modal fade" id="servico-<?php echo $servico->servico_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="marca-<?php echo $marca->marca_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -86,10 +82,10 @@
                                 <span aria-hidden="true">×</span>
                               </button>
                             </div>
-                            <div class="modal-body"><h6>Para excluir o servico selecionado clique em <strong>"Confirmar" !</strong> </h6></div>
+                            <div class="modal-body"><h6>Para excluir a marca selecionada clique em <strong>"Confirmar" !</strong> </h6></div>
                             <div class="modal-footer">
                               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                              <a class="btn btn-danger" href="<?php echo base_url('servicos/deletar/'.$servico->servico_id); ?>">Confirmar</a>
+                              <a class="btn btn-danger" href="<?php echo base_url('marcas/deletar/'.$marca->marca_id); ?>">Confirmar</a>
                             </div>
                           </div>
                         </div>
