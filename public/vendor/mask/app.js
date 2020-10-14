@@ -1,5 +1,5 @@
 $(function() {
-    //$('.money').mask('#.##0,00', {reverse: true});
+    $('.money').mask('#.##0,00', { reverse: true });
     $('.money2').mask('#,##0.00', { reverse: true });
     $('.rg').mask('00.000.000-0');
     $('.cep').mask('00000-000');
