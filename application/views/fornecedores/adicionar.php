@@ -65,7 +65,7 @@
                       <div class="form-group row">
                           <div class="col-md-4">
                             <label>CNPJ</label>
-                            <input type="text" class="form-control" name="fornecedor_cnpj" placeholder="CNPJ" onblur="pesquisacep(this.value);" value="<?php echo set_value('fornecedor_cnpj'); ?>">
+                            <input type="text" class="form-control" name="fornecedor_cnpj" placeholder="CNPJ" value="<?php echo set_value('fornecedor_cnpj'); ?>">
                             <?php echo form_error('fornecedor_cnpj', '<small class="form-text text-danger">', '</small>'); ?>
                           </div>
                           <div class="col-md-4">
@@ -131,12 +131,12 @@
                         </div>
                       <div class="col-md-6">
                           <label>Cidade</label>
-                          <input type="text" class="form-control" id="cidade" name="fornecedor_cidade" placeholder="Cidade" value="<?php echo set_value('fornecedor_cidade'); ?>">
+                          <input type="text" class="form-control" id="cidade" name="fornecedor_cidade" placeholder="Cidade" readonly="" value="<?php echo set_value('fornecedor_cidade'); ?>">
                           <?php echo form_error('fornecedor_cidade', '<small class="form-text text-danger">', '</small>'); ?>
                         </div>
                         <div class="col-md-2">
                           <label>Esatdo</label>
-                          <input type="text" class="form-control uf" id="uf"name="fornecedor_estado" placeholder="UF" value="<?php echo set_value('fornecedor_estado'); ?>">
+                          <input type="text" class="form-control uf" id="uf"name="fornecedor_estado" placeholder="UF" readonly="" value="<?php echo set_value('fornecedor_estado'); ?>">
                           <?php echo form_error('fornecedor_estado', '<small class="form-text text-danger">', '</small>'); ?>
                         </div>
                     </div>
