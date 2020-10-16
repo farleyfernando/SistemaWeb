@@ -145,7 +145,7 @@
                   <legend class="" style="font-size:17px"><i class="fas fa-tools"></i>&nbsp; Configurações</legend>
                   <div class="form-group row">
                     <div class="col-md-2">
-                        <label>Cliente Ativo</label>
+                        <label>Fornecedor Ativo</label>
                           <select class="form-control" name="fornecedor_ativo">
                             <option value="0">Não</option>
                             <option value="1">Sim</option>

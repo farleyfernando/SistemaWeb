@@ -12,7 +12,7 @@
 
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="<?php echo base_url('categoria'); ?>">Categoria</a></li>
+              <li class="breadcrumb-item"><a href="<?php echo base_url('categorias'); ?>">Categorias</a></li>
               <li class="breadcrumb-item active" aria-current="page"><?php echo $titulo; ?></li>
             </ol>
           </nav>
@@ -50,7 +50,7 @@
               <form method="post" name="form_edit">
                 
                 <fieldset class="mt-4 border p-2">
-                  <legend class="" style="font-size:17px"><i class="fas fa-th-large"></i>&nbsp; categoria </legend>
+                  <legend class="" style="font-size:17px"><i class="fas fa-th-large"></i>&nbsp; Categorias </legend>
                       <div class="form-group row">
                         <div class="col-md-6">
                           <label>Categoria</label>
@@ -58,7 +58,7 @@
                           <?php echo form_error('categoria_nome', '<small class="form-text text-danger">', '</small>'); ?>
                         </div>                    
                         <div class="col-md-6">
-                            <label>categoria Ativa</label>
+                            <label>Categoria Ativa</label>
                             <select class="form-control" name="categoria_ativa">
                               <option value="0">Não</option>
                               <option value="1">Sim</option>

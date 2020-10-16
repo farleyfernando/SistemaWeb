@@ -73,6 +73,18 @@ class Fornecedores extends CI_Controller
 
             if ($this->form_validation->run()) {
 
+                $fornecedor_ativo = $this->input->post('fornecedor_ativo');
+
+                if($this->db->table_exists('produtos')){
+
+                    if($fornecedor_ativo == 0 && $this->core_model->get_by_id('produtos', ['produto_fornecedor_id' => $fornecedor_id, 'produto_ativo' => 1])){
+                        
+                        $this->session->set_flashdata('info', 'Solicitação não atendida, existem <i class="fab fa-product-hunt"></i>&nbsp;Produtos associados a esse fornecedor !!!');
+                        redirect('fornecedores'); 
+                    }
+
+                }
+
                 $data = elements(
                     [
                         'fornecedor_razao',

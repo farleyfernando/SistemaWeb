@@ -51,6 +51,18 @@ class Marcas extends CI_Controller
 
             if ($this->form_validation->run()) {
 
+                $marca_ativa = $this->input->post('marca_ativa');
+
+                if($this->db->table_exists('produtos')){
+
+                    if($marca_ativa == 0 && $this->core_model->get_by_id('produtos', ['produto_marca_id' => $marca_id, 'produto_ativo' => 1])){
+                        
+                        $this->session->set_flashdata('info', 'Solicitação não atendida, existem <i class="fab fa-product-hunt"></i>&nbsp;Produtos associados a essa marca !!!');
+                        redirect('marcas'); 
+                    }
+
+                }
+
                 $data = elements(
                     [
                         'marca_nome',                    
@@ -91,7 +103,7 @@ class Marcas extends CI_Controller
 
     public function adicionar(){
 
-        $this->form_validation->set_rules('marca_nome', 'marca', 'trim|min_length[3]|max_length[45]|required|is_unique[marcas.marca_nome]');
+        $this->form_validation->set_rules('marca_nome', 'marca', 'trim|min_length[2]|max_length[45]|required|is_unique[marcas.marca_nome]');
             
 
         if ($this->form_validation->run()) {

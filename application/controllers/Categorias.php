@@ -51,6 +51,18 @@ class Categorias extends CI_Controller
 
             if ($this->form_validation->run()) {
 
+                $categoria_ativa = $this->input->post('categoria_ativa');
+
+                if($this->db->table_exists('produtos')){
+
+                    if($categoria_ativa == 0 && $this->core_model->get_by_id('produtos', ['produto_categoria_id' => $categoria_id, 'produto_ativo' => 1])){
+                        
+                        $this->session->set_flashdata('info', 'Solicitação não atendida, existem <i class="fab fa-product-hunt"></i>&nbsp;Produtos associados a essa categoria !!!');
+                        redirect('categorias'); 
+                    }
+
+                }
+
                 $data = elements(
                     [
                         'categoria_nome',                    
