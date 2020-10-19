@@ -71,6 +71,17 @@ class Clientes extends CI_Controller
 
             if ($this->form_validation->run()) {
 
+                if($this->db->table_exists('contas_receber')){
+
+                    $cliente_ativo = $this->input->post('cliente_ativo');
+
+                    if($cliente_ativo == 0 && $this->core_model->get_by_id('contas_receber', ['conta_receber_cliente_id' => $cliente_id, 'conta_receber_status' => 0])){
+                        
+                        $this->session->set_flashdata('info', 'Solicitação não atendida, pois existem <i class="fas fa-hand-holding-usd"></i>&nbsp;Contas em aberto para esse cliente !!!');
+                        redirect('clientes'); 
+                    }
+                }
+
                 $data = elements(
                     [
                         'cliente_nome',
@@ -217,12 +228,27 @@ class Clientes extends CI_Controller
         if (!$cliente_id || !$this->core_model->get_by_id('clientes', ['cliente_id' => $cliente_id])) {
             $this->session->set_flashdata('error', 'Cliente não localizado');
             redirect('clientes');
-            
-        } else {
+        }
 
-            $this->core_model->delete('clientes', ['cliente_id' => $cliente_id]);
-            redirect('clientes');
-        }  
+            if($this->db->table_exists('contas_receber')){
+
+                if($this->core_model->get_by_id('contas_receber', ['conta_receber_cliente_id' => $cliente_id, 'conta_receber_status' => 0])){
+                    
+                    $this->session->set_flashdata('info', 'Solicitação não atendida, pois existem <i class="fas fa-hand-holding-usd"></i>&nbsp;Contas em aberto para esse cliente !!!');
+                    redirect('clientes'); 
+
+                }else {
+                       
+                   
+                    $this->core_model->delete('clientes', ['cliente_id' => $cliente_id]);
+                    
+                    $this->core_model->delete('contas_receber', ['conta_receber_cliente_id' => $cliente_id]);
+
+                    redirect('clientes');
+
+                    
+                }  
+            }
     }
 
     public function valida_cnpj($cnpj) {

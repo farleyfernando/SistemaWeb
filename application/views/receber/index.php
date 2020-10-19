@@ -16,6 +16,7 @@
               <li class="breadcrumb-item active" aria-current="page"><?php echo $titulo; ?></li>
             </ol>
           </nav>
+          
           <?php if($message = $this->session->flashdata('sucesso')) : ?>
             <div class="row">
               <div class="col-md-12">
@@ -57,7 +58,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <a title="Cadastrar clientes" href="<?php echo base_url('clientes/adicionar'); ?>" class="btn btn-success float-right"><i class="fas fa-user-tie"></i>&nbsp; Novo</a>
+              <a title="Cadastrar contas a receber" href="<?php echo base_url('receber/adicionar'); ?>" class="btn btn-success float-right"><i class="fas fa-plus"></i></i>&nbsp; Nova</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -65,31 +66,51 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Nome</th>
-                      <th >CPF/CNPJ</th>
-                      <th class="text-center">Tipo Cliente</th>
-                      <th class="text-center pr-2">Ativo</th>
+                      <th>Cliente</th>
+                      <th class="text-center">Valor Conta</th>
+                      <th class="text-center">Data Vencimento</th>
+                      <th class="text-center">Data Pagamento</th>
+                      <th class="text-center">Situação</th>
                       <th class="text-center pr-3 no-sort">Ações</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($clientes as $cliente): ?>
+                    <?php foreach ($contas_receber as $conta): ?>
                     <tr>
-                      <td><?php echo $cliente->cliente_id ?></td>
-                      <td><?php echo $cliente->cliente_nome ?></td>
-                      <td><?php echo $cliente->cliente_cpf_cnpj ?></td>
-                      <td class="text-center pr-1"><?php echo ($cliente->cliente_tipo == 2 ? '<span class="badge badge-dark btn-sm">PJ</span>' : '<span class="badge badge-warning btn-sm">PF</span>') ?></td>
+                      <td><?php echo $conta->conta_receber_id ?></td>
+                      <td><?php echo $conta->cliente_nome ?></td>
+                      <td class="text-center pr-4"><?php echo 'R$&nbsp;'.$conta->conta_receber_valor ?></td>
+                      <td class="text-center pr-4"><?php echo formata_data_banco_sem_hora($conta->conta_receber_data_vencto); ?></td>
+                      <td class="text-center pr-4"><?php echo ($conta->conta_receber_status == 1 ? formata_data_banco_com_hora($conta->conta_receber_data_pagamento) : 'Aguardando Pgto')  ?></td>
 
-                      <td class="text-center"><?php echo ($cliente->cliente_ativo == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-secondary btn-sm">Não</span>') ?></td> 
-
-                      <td class="text-center pr-1">
-                        <a title="Editar Usuário" href="<?php echo base_url('clientes/editar/'.$cliente->cliente_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
-                        <a title="Excluir Usuário"href="javascript(void)" data-toggle="modal" data-target="#cliente-<?php echo $cliente->cliente_id; ?>"class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>
-                      </td> 
                       
+                      <td class="text-center pr-3">
+                        <?php 
+
+                          if($conta->conta_receber_status == 1){
+
+                            echo '<span class="badge badge-success btn-sm text-gray-900">Paga</span>';
+
+                          }elseif(strtotime($conta->conta_receber_data_vencto) > strtotime(date('Y-m-d'))){
+
+                            echo '<span class="badge badge-secondary btn-sm text-gray-900">À receber</span>';
+
+                          }elseif(strtotime($conta->conta_receber_data_vencto) == strtotime(date('Y-m-d'))){
+
+                            echo '<span class="badge badge-warning btn-sm text-gray-900">Vence Hoje</span>';    
+                          }else{
+                            echo '<span class="badge badge-danger btn-sm">Vencida</span>';  
+                          }
+                         ?>
+                      </td>
+                      <td class="text-center pr-1">
+                        <a title="Editar conta a receber" href="<?php echo base_url('receber/editar/'.$conta->conta_receber_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                        <a title="Excluir conta a receber"href="javascript(void)" data-toggle="modal" data-target="#conta-<?php echo $conta->conta_receber_id ?>"class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                      </td> 
+              
                     </tr> 
                       <!-- Confirma exclusão Modal-->
-                      <div class="modal fade" id="cliente-<?php echo $cliente->cliente_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="conta-<?php echo $conta->conta_receber_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -98,15 +119,14 @@
                                 <span aria-hidden="true">×</span>
                               </button>
                             </div>
-                            <div class="modal-body"><h6>Para excluir o cliente selecionado clique em <strong>"Confirmar" !</strong> </h6></div>
+                            <div class="modal-body"><h6>Para excluir a conta selecionado clique em <strong>"Confirmar" !</strong> </h6></div>
                             <div class="modal-footer">
                               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                              <a class="btn btn-danger" href="<?php echo base_url('clientes/deletar/'.$cliente->cliente_id); ?>">Confirmar</a>
+                              <a class="btn btn-danger" href="<?php echo base_url('receber/deletar/'.$conta->conta_receber_id); ?>">Confirmar</a>
                             </div>
                           </div>
                         </div>
                       </div>
-
                     <?php endforeach; ?> 
 
                   </tbody>

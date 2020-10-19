@@ -17,4 +17,18 @@ class Financeiro_model extends CI_Model{
         
 
     }
+
+    public function get_all_receber(){
+
+        $this->db->select([
+            'contas_receber.*',            
+            'cliente_id',
+            'cliente_nome',
+        ]);
+
+        $this->db->join('clientes', 'cliente_id = conta_receber_cliente_id', 'LEFT');
+        return $this->db->get('contas_receber')->result();
+        
+
+    }
 }

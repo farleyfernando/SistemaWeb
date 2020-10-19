@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 
     $('.contas_receber').select2({
-        placeholder: "CPF... CNPJ ... Nome...",
+        placeholder: "Nome...",
         allowClear: true,
         "language": {
             "noResults": function() {
