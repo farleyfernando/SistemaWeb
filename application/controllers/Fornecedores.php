@@ -9,7 +9,7 @@ class Fornecedores extends CI_Controller
         parent::__construct();
 
         if (!$this->ion_auth->logged_in()) {
-            $this->session->set_flashdata('info', 'Voce precisa estar logado, favor efetuar o login');
+            $this->session->set_flashdata('info', 'Sessão encerrada, favor efetuar o login novamente !!!');
             redirect('login');
         }
     }

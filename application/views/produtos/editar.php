@@ -82,7 +82,7 @@
                                                  
                         </div>
                         <div class="col-md-3">
-                        <label>Forncedor</label>
+                        <label>Fornecedor</label>
                         <select class="form-control" name="produto_fornecedor_id">
                             <?php foreach ($fornecedores as $fornecedor): ?>
                               <option value="<?php echo $fornecedor->fornecedor_id ?>" <?php echo ($fornecedor->fornecedor_id == $produto->produto_fornecedor_id ? 'selected':'') ?>><?php echo $fornecedor->fornecedor_nome_fantasia ?></option>

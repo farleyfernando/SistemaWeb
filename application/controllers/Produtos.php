@@ -9,7 +9,7 @@ class Produtos extends CI_Controller
         parent::__construct();
 
         if (!$this->ion_auth->logged_in()) {
-            $this->session->set_flashdata('info', 'Voce precisa estar logado, favor efetuar o login');
+            $this->session->set_flashdata('info', 'Sessão encerrada, favor efetuar o login novamente !!!');
             redirect('login');
         }
 
@@ -101,9 +101,9 @@ class Produtos extends CI_Controller
 
                 'produto' => $this->core_model->get_by_id('produtos', ['produto_id' => $produto_id]),
 
-                'marcas' => $this->core_model->get_all('marcas'),
-                'categorias' => $this->core_model->get_all('categorias'),
-                'fornecedores' => $this->core_model->get_all('fornecedores'),
+                'marcas' => $this->core_model->get_all('marcas', ['marca_ativa' => 1]),
+                'categorias' => $this->core_model->get_all('categorias', ['categoria_ativa' => 1]),
+                'fornecedores' => $this->core_model->get_all('fornecedores', ['fornecedor_ativo' => 1]),
 
             ];
 
@@ -178,9 +178,9 @@ class Produtos extends CI_Controller
 
             'produto_codigo' => $this->core_model->generate_unique_code('produtos','numeric',8,'produto_codigo'),   
         
-            'marcas' => $this->core_model->get_all('marcas'),
-            'categorias' => $this->core_model->get_all('categorias'),
-            'fornecedores' => $this->core_model->get_all('fornecedores'),
+            'marcas' => $this->core_model->get_all('marcas', ['marca_ativa' => 1]),
+            'categorias' => $this->core_model->get_all('categorias', ['categoria_ativa' => 1]),
+            'fornecedores' => $this->core_model->get_all('fornecedores', ['fornecedor_ativo' => 1]),
 
         ];
 
@@ -199,17 +199,18 @@ class Produtos extends CI_Controller
 
     public function deletar($produto_id = null)
     {
-        //$produto_ativo = $this->core_model->get_by_id('produtos',['produto_id' => $produto_id, 'produto_ativo']);
-
-    
 
         if (!$produto_id || !$this->core_model->get_by_id('produtos', ['produto_id' => $produto_id])) {
 
             $this->session->set_flashdata('error', 'Produto não localizado !!!');
             redirect('produtos');                    
-          
+                     
+        }elseif($this->core_model->get_by_id('produtos', ['produto_id' => $produto_id, 'produto_ativo'=> 1])){
+
+            $this->session->set_flashdata('info', 'Solicitção não atendida, produto está ativo !!!');
+            redirect('produtos');    
         }else{
-           
+            
             $this->core_model->delete('produtos', ['produto_id' => $produto_id]);
             redirect('produtos');
         }  

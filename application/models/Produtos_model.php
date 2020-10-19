@@ -24,4 +24,20 @@ class Produtos_model extends CI_Model{
         return $this->db->get('produtos')->result();
 
     }
+
+  
+    public function get_produto_ativo(){
+
+        $this->db->select([
+
+                
+            'produto_ativo',
+            
+        ]);
+
+        $this->db->where('produto_ativo = 1');
+        return $this->db->get('produtos')->result();
+        
+
+    }
 }
