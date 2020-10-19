@@ -52,3 +52,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['modulo'] = 'Formas_pagamentos/index';
+$route['modulo/adicionar'] = 'Formas_pagamentos/adicionar';
+$route['modulo/editar/(:num)'] = 'Formas_pagamentos/editar/$1';
+$route['modulo/deletar/(:num)'] = 'Formas_pagamentos/deletar/$1';
+

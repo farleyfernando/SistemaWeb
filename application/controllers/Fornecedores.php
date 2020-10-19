@@ -217,7 +217,7 @@ class Fornecedores extends CI_Controller
     public function deletar($fornecedor_id = null)
     {
         if (!$fornecedor_id || !$this->core_model->get_by_id('fornecedores', ['fornecedor_id' => $fornecedor_id])) {
-            $this->session->set_flashdata('error', 'Cliente não localizado');
+            $this->session->set_flashdata('error', 'Fornecedor não localizado');
             redirect('fornecedores');
             
         } else {
