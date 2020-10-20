@@ -53,8 +53,15 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+// rotas para formas de pgto
 $route['modulo'] = 'Formas_pagamentos/index';
 $route['modulo/adicionar'] = 'Formas_pagamentos/adicionar';
 $route['modulo/editar/(:num)'] = 'Formas_pagamentos/editar/$1';
 $route['modulo/deletar/(:num)'] = 'Formas_pagamentos/deletar/$1';
+
+//rotas para ordens de serviços
+$route['os'] = 'Ordem_servicos/index';
+$route['os/adicionar'] = 'Ordem_servicos/adicionar';
+$route['os/editar/(:num)'] = 'Ordem_servicos/editar/$1';
+$route['os/deletar/(:num)'] = 'Ordem_servicos/deletar/$1';
 

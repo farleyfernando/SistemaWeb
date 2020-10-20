@@ -27,6 +27,20 @@
         Módulos
       </div>
       <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <i class="fas fa-store-alt"></i>
+                <span>Vendas</span>
+              </a>
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <h6 class="collapse-header">Escolha a opção:</h6>
+                  <a title="Gerenciar ordens de serviço" class="collapse-item" href="<?php echo base_url('os'); ?>"><i class="fas fa-shopping-basket text-gray-900"></i>&nbsp; Ordem de Serviço</a>
+                  
+                </div>
+                
+              </div>
+            </li>
+      <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
               <i class="fas fa-database"></i>
                 <span>Cadastros</span>

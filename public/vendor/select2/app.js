@@ -19,7 +19,7 @@ $(document).ready(function() {
         allowClear: true,
         "language": {
             "noResults": function() {
-                return '<span class="text-danger">Forma não localizado </span> <a href="' + BASE_URL + 'modulo/add" target="_blank" class="btn btn-primary btn-sm">Cadastrar</a>';
+                return '<span class="text-danger">Forma não localizado </span> <a href="' + BASE_URL + 'modulo/adicionar" target="_blank" class="btn btn-primary btn-sm">Cadastrar</a>';
             }
         },
         escapeMarkup: function(markup) {
