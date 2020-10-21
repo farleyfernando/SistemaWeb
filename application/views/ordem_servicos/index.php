@@ -41,6 +41,18 @@
               </div>
             </div>
           <?php endif ?>
+          <?php if($message = $this->session->flashdata('info')) : ?>
+            <div class="row">
+              <div class="col-md-12">
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>                
+              </div>
+            </div>
+          <?php endif ?>
  
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -74,6 +86,7 @@
 
                      
                       <td class="text-center pr-1">
+                        <a title="Imprimir" target="_blank" href="<?php echo base_url('os/pdf/'.$os->ordem_servico_id); ?>" class="btn btn-sm btn-dark"><i class="fas fa-print"></i></a>
                         <a title="Editar ordem de serviço" href="<?php echo base_url('os/editar/'.$os->ordem_servico_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
                         <a title="Excluir ordem de serviço"href="javascript(void)" data-toggle="modal" data-target="#os-<?php echo $os->ordem_servico_id; ?>"class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                       </td> 
@@ -84,15 +97,15 @@
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Confirma a Exclusão?</h5>
+                              <h5 class="modal-title" id="exampleModalLabel">Confirma a exclusão?</h5>
                               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                               </button>
                             </div>
-                            <div class="modal-body"><h6>Para excluir o os selecionado clique em <strong>"Confirmar" !</strong> </h6></div>
+                            <div class="modal-body"><h6>Para excluir a "Ordem de Serviço" selecionada clique em <strong>"Confirmar" !</strong> </h6></div>
                             <div class="modal-footer">
                               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                              <a class="btn btn-danger" href="<?php echo base_url('oss/deletar/'.$os->ordem_servico_id); ?>">Confirmar</a>
+                              <a class="btn btn-danger" href="<?php echo base_url('os/deletar/'.$os->ordem_servico_id); ?>">Confirmar</a>
                             </div>
                           </div>
                         </div>

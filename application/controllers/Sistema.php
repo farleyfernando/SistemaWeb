@@ -33,6 +33,7 @@ class Sistema extends CI_Controller
         $this->form_validation->set_rules('sistema_site_url','site','valid_url|max_length[100]');
         $this->form_validation->set_rules('sistema_cep','','required|exact_length[9]');
         $this->form_validation->set_rules('sistema_endereco','','required|max_length[145]');
+        $this->form_validation->set_rules('sistema_bairro','','required|max_length[45]');
         $this->form_validation->set_rules('sistema_numero','','required|max_length[10]');
         $this->form_validation->set_rules('sistema_cidade','cidade','required|max_length[45]');
         $this->form_validation->set_rules('sistema_estado','','required|max_length[2]');
@@ -54,6 +55,7 @@ class Sistema extends CI_Controller
                     'sistema_site_url',
                     'sistema_cep',
                     'sistema_endereco',
+                    'sistema_bairro',
                     'sistema_numero',
                     'sistema_cidade',
                     'sistema_estado',

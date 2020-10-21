@@ -95,7 +95,7 @@ class Servicos extends CI_Controller
 
     public function adicionar(){
 
-        $this->form_validation->set_rules('servico_nome', 'serviço', 'trim|min_length[10]|max_length[145]|required|is_unique[servicos.servico_nome]');
+        $this->form_validation->set_rules('servico_nome', 'serviço', 'trim|min_length[3]|max_length[145]|required|is_unique[servicos.servico_nome]');
         $this->form_validation->set_rules('servico_preco', 'valor', 'trim|required');
         $this->form_validation->set_rules('servico_descricao', 'descrição', 'trim|max_length[700]');
 

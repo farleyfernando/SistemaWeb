@@ -30,6 +30,7 @@ class Ordem_servicos_model extends CI_Model{
             'ordens_servicos.*',
             'clientes.cliente_id',
             'clientes.cliente_cpf_cnpj',
+            'clientes.cliente_celular',
             'CONCAT (clientes.cliente_nome, " ", clientes.cliente_sobrenome) as  cliente_nome_completo',           
             'formas_pagamentos.forma_pagamento_id',
             'formas_pagamentos.forma_pagamento_nome as forma_pagamento',
@@ -37,6 +38,7 @@ class Ordem_servicos_model extends CI_Model{
 
         $this->db->join('clientes', 'cliente_id = ordem_servico_cliente_id', 'left');
         $this->db->join('formas_pagamentos', 'forma_pagamento_id = ordem_servico_forma_pagamento_id', 'left');
+        $this->db->where('ordem_servico_id', $ordem_servico_id);
 
         return $this->db->get('ordens_servicos')->row();
 
@@ -66,5 +68,46 @@ class Ordem_servicos_model extends CI_Model{
             
             $this->db->delete('ordem_tem_servicos', ['ordem_ts_id_ordem_servico' => $ordem_servico_id]);    
         }
+    }
+
+    public function get_all_servicos($ordem_servico_id = null) {
+
+        if($ordem_servico_id){
+            $this->db->select([
+
+                'ordem_tem_servicos.*',
+                'FORMAT(SUM(REPLACE(ordem_ts_valor_unitario, ",","")), 2) as ordem_ts_valor_unitario',
+                'FORMAT(SUM(REPLACE(ordem_ts_valor_total, ",","")), 2) as ordem_ts_valor_total',
+
+                'servicos.servico_id',
+                'servicos.servico_nome',
+
+            ]);
+
+            $this->db->join('servicos', 'servico_id = ordem_ts_id_servico', 'left');
+            $this->db->where('ordem_ts_id_ordem_servico', $ordem_servico_id);
+
+            $this->db->group_by('ordem_ts_id_servico');
+
+            return $this->db->get('ordem_tem_servicos')->result();
+        }
+
+    }
+
+    public function get_valor_final_os($ordem_servico_id = null){
+
+        if($ordem_servico_id){
+
+            $this->db->select([
+                
+                'FORMAT(SUM(REPLACE(ordem_ts_valor_total, ",","")), 2) as os_valor_total',
+            ]);
+
+            $this->db->join('servicos', 'servico_id = ordem_ts_id_servico', 'left');
+            $this->db->where('ordem_ts_id_ordem_servico', $ordem_servico_id);
+
+        }
+        return $this->db->get('ordem_tem_servicos')->row();
+
     }
 }

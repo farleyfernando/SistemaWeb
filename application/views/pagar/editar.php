@@ -95,7 +95,7 @@
 
                   
 
-                    <button type="submit" class="btn btn-success" <?php echo($conta_pagar->conta_pagar_status == 1 ? 'disabled' : '') ?>><i class="far fa-save ml-1"></i>&nbsp; Salvar</button>
+                    <button type="submit" class="btn btn-success" <?php echo($conta_pagar->conta_pagar_status == 1 ? 'disabled' : '') ?>><?php echo ($conta_pagar->conta_pagar_status == 1 ? 'Conta Paga' : '<i class="far fa-save ml-1"></i>&nbsp;Salvar'); ?></button>
                 <a title="Voltar" href="<?php echo base_url($this->router->fetch_class()); ?>" class="btn btn-primary ml-2"><i class="fas fa-arrow-left"></i>&nbsp; Voltar</a>
             </div>              
           </form>

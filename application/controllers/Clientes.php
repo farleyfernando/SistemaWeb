@@ -147,13 +147,14 @@ class Clientes extends CI_Controller
 
         if($cliente_tipo == '1'){
 
+          $this->form_validation->set_rules('cliente_rg', '','trim|required|exact_length[12]|is_unique[clientes.cliente_rg_ie]'); 
           $this->form_validation->set_rules('cliente_cpf', '','trim|required|exact_length[14]|is_unique[clientes.cliente_cpf_cnpj]|callback_valida_cpf');
+
         }else{
             
             $this->form_validation->set_rules('cliente_cnpj', '','trim|required|exact_length[18]|is_unique[clientes.cliente_cpf_cnpj]|callback_valida_cnpj');
+            $this->form_validation->set_rules('cliente_ie', '','trim|required|max_length[15]|is_unique[clientes.cliente_rg_ie]');
         }
-
-        $this->form_validation->set_rules('cliente_rg_ie', '', 'trim|required|max_length[20]|is_unique[clientes.cliente_rg_ie]');
 
         $this->form_validation->set_rules('cliente_email', '', 'trim|required|valid_email|max_length[50]|is_unique[clientes.cliente_email]');
 
@@ -170,13 +171,16 @@ class Clientes extends CI_Controller
 
         if ($this->form_validation->run()) {
 
+            //echo'<pre>';
+            //print_r($this->input->post());
+            //exit();
+
             $data = elements(
                 [
                     'cliente_tipo',
                     'cliente_nome',
                     'cliente_sobrenome',
                     'cliente_data_nascimento',
-                    'cliente_rg_ie',
                     'cliente_email',
                     'cliente_telefone',
                     'cliente_celular',
@@ -194,9 +198,11 @@ class Clientes extends CI_Controller
             if($cliente_tipo == 1){
 
                 $data ['cliente_cpf_cnpj'] =$this->input->post('cliente_cpf');
+                $data ['cliente_rg_ie'] =$this->input->post('cliente_rg');
 
             }else{
                 $data ['cliente_cpf_cnpj'] =$this->input->post('cliente_cnpj');
+                $data ['cliente_rg_ie'] =$this->input->post('cliente_ie');
             }
 
             $data ['cliente_estado'] = strtoupper($this->input->post('cliente_estado'));

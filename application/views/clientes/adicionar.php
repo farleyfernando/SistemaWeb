@@ -92,12 +92,16 @@
                 </div>
                   <div class="form-group row">
                     <div class="col-md-3">
-                        <label class="pessoa_fisica" >RG</label>
-                        <label class="pessoa_juridica" >Inscricão Estadual</label>  
-                        
-                        <input type="text" class="form-control" name="cliente_rg_ie" placeholder="" value="<?php echo set_value('cliente_rg_ie'); ?>">
-
-                        <?php echo form_error('cliente_rg_ie', '<small class="form-text text-danger">', '</small>'); ?>
+                        <div class="pessoa_fisica">
+                            <label>RG</label>
+                            <input type="text" class="form-control rg" name="cliente_rg" placeholder="RG" value="<?php echo set_value('cliente_rg'); ?>">
+                            <?php echo form_error('cliente_rg', '<small class="form-text text-danger">', '</small>'); ?>
+                        </div>
+                        <div class="pessoa_juridica">
+                            <label>Inscrição Estadual</label>
+                            <input type="text" class="form-control" name="cliente_ie" placeholder="Insc. Est." value="<?php echo set_value('cliente_ie'); ?>">
+                            <?php echo form_error('cliente_ie', '<small class="form-text text-danger">', '</small>'); ?>
+                        </div>  
                     </div>
                     <div class="col-md-3">
                       <label>E-mail</label>
@@ -106,7 +110,7 @@
                     </div>
                     <div class="col-md-3">
                       <label>Telefone</label>
-                      <input type="text" class="form-control sp_celphones" name="cliente_telefone" placeholder="Tel. fixo" value="<?php echo set_value('cliente_telefone'); ?>">
+                      <input type="text" class="form-control telfixo" name="cliente_telefone" placeholder="Tel. fixo" value="<?php echo set_value('cliente_telefone'); ?>">
                       <?php echo form_error('cliente_telefone', '<small class="form-text text-danger">', '</small>'); ?>
                     </div> 
                     <div class="col-md-3">

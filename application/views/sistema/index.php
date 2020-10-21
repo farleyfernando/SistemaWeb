@@ -109,12 +109,17 @@
                     <input type="text" class="form-control" name="sistema_numero" placeholder="N°" value="<?php echo $sistema->sistema_numero; ?>">
                     <?php echo form_error('sistema_numero', '<small class="form-text text-danger">', '</small>'); ?>
                   </div>
+                  <div class="col-md-2">
+                    <label>Bairro</label>
+                    <input type="text" class="form-control" name="sistema_bairro" placeholder="Bairro" value="<?php echo $sistema->sistema_bairro; ?>">
+                    <?php echo form_error('sistema_bairro', '<small class="form-text text-danger">', '</small>'); ?>
+                  </div>
                   <div class="col-md-3">
                     <label>Cidade</label>
                     <input type="text" class="form-control" name="sistema_cidade" placeholder="Cidade" value="<?php echo $sistema->sistema_cidade; ?>">
                     <?php echo form_error('sistema_cidade', '<small class="form-text text-danger">', '</small>'); ?>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-1">
                     <label>Estado</label>
                     <input type="text" class="form-control uf" name="sistema_estado" placeholder="UF" value="<?php echo $sistema->sistema_estado; ?>">
                     <?php echo form_error('sistema_estado', '<small class="form-text text-danger">', '</small>'); ?>
@@ -122,7 +127,7 @@
                 </div>
               <div class="row mb-4">
                 <div class="col-12">
-                  <label>Obs. ordem de serviço e vendas</label>
+                  <label>Observações</label>
                     <textarea class="form-control" name="sistema_txt_ordem_servico" style="max-height: 60px;min-width: 100%" placeholder="Observaçoes"><?php echo $sistema->sistema_txt_ordem_servico; ?></textarea>
                     <?php echo form_error('sistema_txt_ordem_servico', '<small class="form-text text-danger">', '</small>'); ?>
                 </div>
