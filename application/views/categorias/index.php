@@ -57,7 +57,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <a title="Cadastrar categoria" href="<?php echo base_url('categorias/adicionar'); ?>" class="btn btn-success float-right"><i class="fas fa-plus"></i></i>&nbsp; Novo</a>
+              <a title="Cadastrar categoria" href="<?php echo base_url('categorias/adicionar'); ?>" class="btn btn-success float-right"><i class="fas fa-plus"></i></i>&nbsp; Categoria</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">

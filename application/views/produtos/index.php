@@ -57,7 +57,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <a title="Cadastrar Produtos" href="<?php echo base_url('produtos/adicionar'); ?>" class="btn btn-success float-right"><i class="fas fa-plus"></i></i>&nbsp; Novo</a>
+              <a title="Cadastrar Produtos" href="<?php echo base_url('produtos/adicionar'); ?>" class="btn btn-success float-right"><i class="fas fa-plus"></i></i>&nbsp; Produtos</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -84,10 +84,23 @@
                       <td><?php echo $produto->produto_marca ?></td>
                       <td><?php echo $produto->produto_categoria ?></td>
                       <td class="text-center"><?php echo '<span class="badge badge-primary btn-sm">'.$produto->produto_estoque_minimo.'</span>' ?></td>
+                    
+                      <?php
 
-                      <td class="text-center"><?php echo ($produto->produto_qtde_estoque == $produto->produto_estoque_minimo ? '<span class="badge badge-warning btn-sm text-gray-900">'.$produto->produto_qtde_estoque.'</span>' : '<span class="badge badge-success btn-sm">'.$produto->produto_qtde_estoque.'</span>') ?></td>
-                      
-                  
+                      if($produto->produto_qtde_estoque == $produto->produto_estoque_minimo){
+
+                        echo '<td class="text-center"><span class="badge badge-warning btn-sm text-gray-900">'. $produto->produto_qtde_estoque.'</span></td>';
+
+                      }elseif($produto->produto_qtde_estoque < $produto->produto_estoque_minimo){
+
+                        echo '<td class="text-center"><span class="badge badge-danger btn-sm text-gray-900">'. $produto->produto_qtde_estoque.'</span></td>';
+
+                      }else{
+                        echo '<td class="text-center"><span class="badge badge-success btn-sm text-gray-900">'. $produto->produto_qtde_estoque.'</span></td>';
+                      }
+
+                      ?>
+  
                       <td class="text-center"><?php echo ($produto->produto_ativo == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-secondary btn-sm">Não</span>') ?></td> 
 
                       <td class="text-center pr-1">

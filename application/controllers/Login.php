@@ -24,7 +24,15 @@ class Login extends CI_Controller
         if ($this->ion_auth->login($identity, $password, $remember)) {
             redirect('home');
         } else {
-            $this->session->set_flashdata('error', 'Email ou senha inválidos');
+
+            $usuario = $this->core_model->get_by_id('users', array('email' => $identity));
+ 
+            if($usuario->active == 0){
+                $this->session->set_flashdata('info', 'Sua conta está inativa !!!'); /// coloque o texto que achar melhor
+                redirect('login');
+            }
+
+            $this->session->set_flashdata('error', 'Email ou senha incorretos !!!');
             redirect('login');
         }
     }

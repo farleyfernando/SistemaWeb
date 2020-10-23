@@ -45,7 +45,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <a title="Inserir usuário" href="<?php echo base_url('usuarios/adicionar'); ?>" class="btn btn-success float-right"><i class="fas fa-user-plus"></i>&nbsp; Novo</a>
+              <a title="Inserir usuário" href="<?php echo base_url('usuarios/adicionar'); ?>" class="btn btn-success float-right"><i class="fas fa-user-plus"></i>&nbsp; Usuário</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">

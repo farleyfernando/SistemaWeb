@@ -14,7 +14,7 @@ $counter = $('table.table').find('tbody').children().length;
 if ($counter > 0) {
 
     /*Recupera através do loop todos os produtos do input 'produto_descricao'*/
-    $('#table_produtos tr').each(function () {
+    $('#table_produtos tr').each(function() {
 
         /*Armazena na variável produto, o valor contido no input 'produto_descricao'*/
         var produto = $(this).find("input.produto_descricao").val();
@@ -35,10 +35,10 @@ if ($counter > 0) {
 }
 /*Fim bloco que adiciona no array "produtos_adicionados" os produtos já existentes na venda*/
 
-$(document).ready(function () {
+$(document).ready(function() {
 
     /*Previne o submit do form com a tecla Enter*/
-    $(window).keydown(function (event) {
+    $(window).keydown(function(event) {
 
         if ((event.keyCode == 13)) {
 
@@ -50,7 +50,7 @@ $(document).ready(function () {
 
     $("#buscar_produtos").autocomplete({
 
-        source: function (request, response) {
+        source: function(request, response) {
 
             $.ajax({
                 url: BASE_URL + 'ajax/produtos',
@@ -59,14 +59,14 @@ $(document).ready(function () {
                 data: {
                     term: request.term,
                 },
-                success: function (data) {
+                success: function(data) {
 
                     if (data.response == "false") {
 
                         var result = [{
-                                label: 'Produto não encontrado',
-                                value: response.term
-                            }];
+                            label: 'Produto não encontrado !!!',
+                            value: response.term
+                        }];
                         response(result);
 
                     } else {
@@ -76,10 +76,10 @@ $(document).ready(function () {
             });
         },
         minLength: 1,
-        select: function (event, ui) {
+        select: function(event, ui) {
 
             /*Caso o produto não seja encontrado, interrompe o seguimento*/
-            if (ui.item.value === 'Produto não encontrado') {
+            if (ui.item.value === 'Produto não encontrado !!!') {
                 return false;
             } else {
                 var produto_id = ui.item.id;
@@ -91,7 +91,7 @@ $(document).ready(function () {
                 var i = ++$counter;
                 var markup = '<tr>\
                     <td><input type="hidden" name="produto_id[]" value="' + produto_id + '" data-cell="A' + i + '" data-format="0" readonly></td>\
-                    <td><input title="Descrição do produto" type="text" name="produto_descricao[]" value="' + produto_descricao + '" class="produto_descricao form-control form-control-user input-sm" data-cell="B' + i + '" readonly></td>\
+                    <td><input title="Descrição do produto" type="text" name="produto_descricao[]" value="' + produto_descricao + '" class="produto_descricao form-control form-control-user input-sm" data-cell="B' + i + '" readonly required></td>\
                     <td><input title="Valor unitário do produto" name="produto_preco_venda[]" value="' + produto_preco_venda + '" class="form-control form-control-user input-sm text-right money pr-1" data-cell="C' + i + '" data-format="R$ 0,0.00" readonly></td>\
                     <td><input title="Digite a quantidade apenas em número inteiros" type="text" inputmode="numeric" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="produto_quantidade[]" value="" class="qty form-control form-control-user text-center" data-cell="D' + i + '" data-format="0[.]00" required></td>\
                     <td><input title="Insira o desconto" name="produto_desconto[]" class="form-control form-control-user input-sm text-right" value="0" data-cell="E' + i + '" data-format="0,0[.]00 %" required></td>\
@@ -107,7 +107,7 @@ $(document).ready(function () {
                         icon: 'info',
                         width: 300,
                         title: 'Opss!',
-                        html: 'Esse produto já foi adicionado',
+                        html: 'Esse produto já foi adicionado !!!',
                     })
                 } else {
                     $("table tbody").append(markup);
@@ -117,9 +117,9 @@ $(document).ready(function () {
 
 
                 /*Início bloco que verifica se a quantidade inputada é maior que a disponibilidade em estoque*/
-                $("input.qty").keyup(function () {
+                $("input.qty").keyup(function() {
 
-                    if ($(this).val() > produto_qtde_estoque) {
+                    if (parseInt($(this).val()) > parseInt(produto_qtde_estoque)) {
 
                         Swal.fire({
                             icon: 'warning',
@@ -147,7 +147,7 @@ $(document).ready(function () {
     });
 
     /*Realiza o cáuculo da venda antes de cadastrá-la*/
-    $('#btn-cadastrar-venda').on('click', function () {
+    $('#btn-cadastrar-venda').on('click', function() {
         $form.calx('calculate');
         $form.calx('getCell', 'G1').calculate();
     });
@@ -156,7 +156,7 @@ $(document).ready(function () {
 
 
 /*Deleta o produto da venda*/
-$('#lista_produtos').on('click', '.btn-remove', function () {
+$('#lista_produtos').on('click', '.btn-remove', function() {
 
     var produto_to_remove = $(this).closest('tr').find("input.produto_descricao").val();
 
@@ -172,15 +172,6 @@ $('#lista_produtos').on('click', '.btn-remove', function () {
     }
 
     $form.calx('update');
-//    $form.calx('getCell', 'G1').calculate();
+    //    $form.calx('getCell', 'G1').calculate();
 
 });
-
-
-
-
-
-
-
-
-
