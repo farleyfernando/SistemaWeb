@@ -110,4 +110,54 @@ class Ordem_servicos_model extends CI_Model{
         return $this->db->get('ordem_tem_servicos')->row();
 
     }
+
+        //utilizados no relatório de os 
+    // inicio
+    public function gerar_relatorio_os($data_inicial = null, $data_final = null){
+
+        $this->db->select([
+           
+            'ordens_servicos.*',
+            'clientes.cliente_id',
+            'CONCAT(clientes.cliente_nome, " ", cliente_sobrenome) as  cliente_nome_completo',
+            'formas_pagamentos.forma_pagamento_id',
+            'formas_pagamentos.forma_pagamento_nome as forma_pagamento',
+        ]);
+
+        $this->db->join('clientes', 'cliente_id = ordem_servico_cliente_id', 'left');
+        $this->db->join('formas_pagamentos', 'forma_pagamento_id = ordem_servico_forma_pagamento_id', 'left');
+
+        if($data_inicial && $data_final){
+
+            $this->db->where("SUBSTR(ordem_servico_data_emissao, 1, 10) >='$data_inicial' AND SUBSTR(ordem_servico_data_emissao, 1, 10) <= '$data_final'");
+
+        }else{
+
+            $this->db->where("SUBSTR(ordem_servico_data_emissao, 1, 10) >='$data_inicial'");
+
+        }
+
+        return $this->db->get('ordens_servicos')->result();
+    }
+
+    public function get_valor_final_relatorio_os($data_inicial = null, $data_final = null){
+       
+        $this->db->select([
+            'FORMAT(SUM(REPLACE(ordem_servico_valor_total, ",","")), 2) as ordem_servico_valor_total',
+        ]);
+
+        if($data_inicial && $data_final){
+
+            $this->db->where("SUBSTR(ordem_servico_data_emissao, 1, 10) >='$data_inicial' AND SUBSTR(ordem_servico_data_emissao, 1, 10) <= '$data_final'");
+
+        }else{
+
+            $this->db->where("SUBSTR(ordem_servico_data_emissao, 1, 10) >='$data_inicial'");
+
+        }
+
+        return $this->db->get('ordens_servicos')->row();
+
+    }//fim
+      
 }

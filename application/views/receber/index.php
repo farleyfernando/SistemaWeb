@@ -93,7 +93,7 @@
 
                           }elseif(strtotime($conta->conta_receber_data_vencto) > strtotime(date('Y-m-d'))){
 
-                            echo '<span class="badge badge-secondary btn-sm text-gray-900">À receber</span>';
+                            echo '<span class="badge badge-secondary btn-sm text-gray-900">À pagar</span>';
 
                           }elseif(strtotime($conta->conta_receber_data_vencto) == strtotime(date('Y-m-d'))){
 

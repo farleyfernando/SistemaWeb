@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
 
@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="Farley Fernando" content="">
 
   <?php echo (isset($titulo) ? '<title>Cats Moda | '.$titulo.'</title>' : '<title>Cat"s Moda</title>') ?>
 
