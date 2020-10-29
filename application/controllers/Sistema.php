@@ -12,6 +12,12 @@ class Sistema extends CI_Controller
             $this->session->set_flashdata('info', 'Sessão encerrada, favor efetuar o login novamente !!!');
             redirect('login');
         }
+        
+        if(!$this->ion_auth->is_admin()){
+
+            $this->session->set_flashdata('info', 'ACESSO NEGADO !!!');
+            redirect('/');
+        }
     }
 
     public function index()

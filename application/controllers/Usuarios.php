@@ -16,6 +16,12 @@ class Usuarios extends CI_Controller
 
     public function index()
     {
+        if(!$this->ion_auth->is_admin()){
+
+            $this->session->set_flashdata('info', 'ACESSO NEGADO !!!');
+            redirect('/');
+        }
+
         $data = [
             'titulo' => 'Usuários cadastrados',
 
@@ -37,6 +43,13 @@ class Usuarios extends CI_Controller
 
     public function adicionar()
     {
+
+        if(!$this->ion_auth->is_admin()){
+
+            $this->session->set_flashdata('info', 'ACESSO NEGADO !!!');
+            redirect('/');
+        }
+
         $this->form_validation->set_rules('first_name', 'nome', 'trim|required|min_length[3]|max_length[15]');
         $this->form_validation->set_rules('last_name', '', 'trim|required|min_length[5]|max_length[50]');
         $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|is_unique[users.email]');
@@ -84,10 +97,21 @@ class Usuarios extends CI_Controller
 
     public function edit($usuario_id = null)
     {
+         //Se não for admin e tentar editar user diferente do seu
+         if (!$this->ion_auth->is_admin()) {
+
+            if (($this->session->userdata('user_id') != $usuario_id)) {
+                $this->session->set_flashdata('error', 'ACESSO NEGADO !!!');
+                redirect('/');
+            }
+        }
+
         if (!$usuario_id || !$this->ion_auth->user($usuario_id)->row()) {
             $this->session->set_flashdata('error', 'Usuário não localizado !!!');
             redirect('usuarios');
         } else {
+
+            
             $this->form_validation->set_rules('first_name', 'nome', 'trim|required|min_length[3]|max_length[10]');
             $this->form_validation->set_rules('last_name', '', 'trim|required|min_length[5]|max_length[50]');
             $this->form_validation->set_rules('email', '', 'trim|required|valid_email|callback_email_check');
@@ -97,6 +121,11 @@ class Usuarios extends CI_Controller
             $this->form_validation->set_rules('confirm_password', 'confirmar senha', 'matches[password]');
 
             if ($this->form_validation->run()) {
+
+               // echo '<pre>';
+                //print_r($this->input->post());
+                //exit();
+
                 $data = elements(
                     [
                         'first_name',
@@ -108,6 +137,10 @@ class Usuarios extends CI_Controller
                         'password',
                     ], $this->input->post()
                 );
+
+                if (!$this->ion_auth->is_admin()) {
+                    unset($data['active']);
+                }
 
                 // verificação contra tentativa de introdução de codigos maliciosos no formulário limpando os formulários
                 $data = $this->security->xss_clean($data);
@@ -126,18 +159,29 @@ class Usuarios extends CI_Controller
                     $perfil_usuario_post = $this->input->post('perfil_usuario');
 
                     //se o perfil for diferente atualiza o grupo
-                    if ($perfil_usuario_post != $perfil_usuario_db->id) {
-                        $this->ion_auth->remove_from_group($perfil_usuario_db->id, $usuario_id);
 
-                        $this->ion_auth->add_to_group($perfil_usuario_post, $usuario_id);
+                    if ($this->ion_auth->is_admin()) {
+
+                        if ($perfil_usuario_post != $perfil_usuario_db->id) {
+                            $this->ion_auth->remove_from_group($perfil_usuario_db->id, $usuario_id);
+    
+                            $this->ion_auth->add_to_group($perfil_usuario_post, $usuario_id);
+                        }
                     }
+                    
 
                     $this->session->set_flashdata('sucesso', 'Atualização efetuada com sucesso !!!');
                 } else {
                     $this->session->set_flashdata('error', 'Não foi possível efetuar a atualização !!!');
                 }
 
-                redirect('usuarios');
+                if($this->ion_auth->is_admin()){
+
+                    redirect('usuarios');                 
+                }else{
+                    redirect('/');
+                }
+                
             } else {
                 $data = [
                     'titulo' => 'Editar usuário',
@@ -154,6 +198,12 @@ class Usuarios extends CI_Controller
 
     public function deletar($usuario_id = null)
     {
+        if(!$this->ion_auth->is_admin()){
+
+            $this->session->set_flashdata('info', 'ACESSO NEGADO !!!');
+            redirect('/');
+        }
+
         if (!$usuario_id || !$this->ion_auth->user($usuario_id)->row()) {
             $this->session->set_flashdata('error', 'Usuário não localizado !!!');
             redirect('usuarios');

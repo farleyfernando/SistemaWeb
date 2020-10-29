@@ -64,6 +64,8 @@
                 </div>
               </div>
             </li>
+            
+        <?php if($this->ion_auth->is_admin()): ?>
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseQuatro" aria-expanded="true" aria-controls="collapseTwo">
               <i class="fas fa-dollar-sign"></i>
@@ -99,25 +101,31 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Configurações
-      </div>
 
-      <!-- Nav Item -->
-      <li class="nav-item">
-        <a title="Gerenciar Usuários" class="nav-link" href="<?php echo base_url('usuarios'); ?>">
-          <i class="fas fa-users"></i>
-          <span>Usuários</span></a>
-      </li>
-      <li class="nav-item">
-        <a title="Gerenciar Sistema" class="nav-link" href="<?php echo base_url('sistema'); ?>">
-          <i class="fas fa-cogs"></i>
-          <span>Sistema</span></a>
-      </li>
+      <!-- verifica se o usuario logado é um adm, se não for esconde os modulo abaixo -->
+      
 
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+              Configurações
+            </div>
+
+            <!-- Nav Item -->
+            <li class="nav-item">
+              <a title="Gerenciar Usuários" class="nav-link" href="<?php echo base_url('usuarios'); ?>">
+                <i class="fas fa-users"></i>
+                <span>Usuários</span></a>
+            </li>
+            <li class="nav-item">
+              <a title="Gerenciar Sistema" class="nav-link" href="<?php echo base_url('sistema'); ?>">
+                <i class="fas fa-cogs"></i>
+                <span>Sistema</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+        <?php endif; ?>
 
       <!-- Sidebar Toggler (Sidebar) 
       <div class="text-center d-none d-md-inline">

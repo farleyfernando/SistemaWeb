@@ -13,6 +13,12 @@ class Pagar extends CI_Controller
             redirect('login');
         }
 
+        if(!$this->ion_auth->is_admin()){
+
+            $this->session->set_flashdata('info', 'ACESSO NEGADO !!!');
+            redirect('/');
+        }
+
         $this->load->model('financeiro_model');
 
     }
