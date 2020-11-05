@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20-Out-2020 às 21:54
+-- Tempo de geração: 05-Nov-2020 às 01:30
 -- Versão do servidor: 10.4.13-MariaDB
 -- versão do PHP: 7.4.8
 
@@ -26,8 +26,6 @@ SET time_zone = "+00:00";
 --
 -- Estrutura da tabela `categorias`
 --
--- Criação: 14-Out-2020 às 21:50
---
 
 CREATE TABLE `categorias` (
   `categoria_id` int(11) NOT NULL,
@@ -49,9 +47,6 @@ INSERT INTO `categorias` (`categoria_id`, `categoria_nome`, `categoria_ativa`, `
 
 --
 -- Estrutura da tabela `clientes`
---
--- Criação: 12-Out-2020 às 10:14
--- Última actualização: 20-Out-2020 às 16:44
 --
 
 CREATE TABLE `clientes` (
@@ -85,15 +80,13 @@ CREATE TABLE `clientes` (
 INSERT INTO `clientes` (`cliente_id`, `cliente_data_cadastro`, `cliente_tipo`, `cliente_nome`, `cliente_sobrenome`, `cliente_data_nascimento`, `cliente_cpf_cnpj`, `cliente_rg_ie`, `cliente_email`, `cliente_telefone`, `cliente_celular`, `cliente_cep`, `cliente_endereco`, `cliente_numero_endereco`, `cliente_bairro`, `cliente_complemento`, `cliente_cidade`, `cliente_estado`, `cliente_ativo`, `cliente_obs`, `cliente_data_alteracao`) VALUES
 (3, '2020-10-12 19:58:02', 2, 'Smart Cell', 'Smart Cell', '2020-01-03', '35.556.964/0001-03', '577.460.757.672', 'smart@uol.com', '(18) 2315-1252', '(18) 99132-5145', '19470-000', 'Fernando Costa', '11-60', 'Vila maria', 'perto redondo', 'Presidente Epitácio', 'SP', 1, 'Teste', '2020-10-20 16:44:59'),
 (7, '2020-10-13 11:08:10', 1, 'Ana Paula', 'da Mota Souza', '1978-03-17', '273.338.568-28', '33.431.111-X', 'ana@hotmail.com', '(18) 3281-5241', '(18) 95421-4515', '19470-000', 'Fernando Costa', '1160', 'Vila Maria', 'casa', 'Presidente Epitácio', 'SP', 1, '', '2020-10-19 15:04:48'),
-(9, '2020-10-20 16:27:43', 1, 'Farley Fernando', 'Santos', '2020-10-07', '315.374.768-74', '33.431.111-0', 'farleyfernando@hotmail.com', '(18) 9918-5254', '(21) 32132-1321', '19470-000', 'Guanabara', '32&#039;', 'jd primavera', 'casa', 'Presidente Epitácio', 'SP', 1, 'teste3', '2020-10-20 16:27:50');
+(9, '2020-10-20 16:27:43', 1, 'Farley Fernando', 'Santos', '2020-10-07', '315.374.768-74', '33.431.111-0', 'farleyfernando@hotmail.com', '(18) 9918-5254', '(21) 32132-1321', '19470-000', 'Guanabara', '32&#039;', 'jd primavera', 'casa', 'Presidente Epitácio', 'SP', 1, 'teste3', '2020-10-20 16:27:50'),
+(10, '2020-10-21 17:05:07', 1, 'Catharina', 'da Mota Souza Santos', '2014-05-17', '383.569.800-11', '83.949.294-4', 'catharina@uol.com', '(18) 3281-8228', '', '19470-000', 'Maceio', '32', 'Centro', 'casa', 'Presidente Epitácio', 'SP', 1, 'cat', '2020-10-21 17:05:40');
 
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `contas_pagar`
---
--- Criação: 16-Out-2020 às 17:36
--- Última actualização: 19-Out-2020 às 12:42
 --
 
 CREATE TABLE `contas_pagar` (
@@ -113,15 +106,14 @@ CREATE TABLE `contas_pagar` (
 
 INSERT INTO `contas_pagar` (`conta_pagar_id`, `conta_pagar_fornecedor_id`, `conta_pagar_data_venc`, `conta_pagar_data_pagamento`, `conta_pagar_valor`, `conta_pagar_status`, `conta_pagar_obs`, `conta_pagar_data_alteracao`) VALUES
 (1, 2, '2020-10-16', '2020-10-17 13:25:52', '200.00', 1, 'paga', '2020-10-19 10:29:39'),
-(2, 3, '2020-11-27', NULL, '1,340.01', 0, 'teste1', '2020-10-19 12:42:17');
+(2, 3, '2020-11-03', NULL, '1,340.01', 0, 'teste1', '2020-11-04 19:28:00'),
+(3, 2, '2020-11-05', NULL, '250.00', 0, '', '2020-11-04 19:23:05'),
+(4, 3, '2020-11-04', '2020-11-04 16:34:29', '25.47', 0, '', '2020-11-04 19:34:48');
 
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `contas_receber`
---
--- Criação: 19-Out-2020 às 11:59
--- Última actualização: 19-Out-2020 às 19:34
 --
 
 CREATE TABLE `contas_receber` (
@@ -141,15 +133,13 @@ CREATE TABLE `contas_receber` (
 
 INSERT INTO `contas_receber` (`conta_receber_id`, `conta_receber_cliente_id`, `conta_receber_data_vencto`, `conta_receber_data_pagamento`, `conta_receber_valor`, `conta_receber_status`, `conta_receber_obs`, `conta_receber_data_alteracao`) VALUES
 (2, 7, '2020-10-23', '2020-10-19 16:34:09', '350.00', 1, '', '2020-10-19 19:34:09'),
-(4, 7, '2020-10-23', '2020-10-19 12:04:16', '217.44', 1, 'Teste', '2020-10-19 15:04:16');
+(4, 7, '2020-10-28', '2020-10-28 15:35:27', '217.44', 0, 'Teste', '2020-11-04 18:10:50'),
+(6, 9, '2020-11-04', NULL, '214.56', 0, '', '2020-11-04 19:21:19');
 
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `formas_pagamentos`
---
--- Criação: 19-Out-2020 às 15:41
--- Última actualização: 19-Out-2020 às 19:25
 --
 
 CREATE TABLE `formas_pagamentos` (
@@ -167,14 +157,13 @@ CREATE TABLE `formas_pagamentos` (
 INSERT INTO `formas_pagamentos` (`forma_pagamento_id`, `forma_pagamento_nome`, `forma_pagamento_aceita_parc`, `forma_pagamento_ativa`, `forma_pagamento_data_alteracao`) VALUES
 (1, 'Cartão de crédito', 1, 1, '2020-10-19 18:52:43'),
 (2, 'Dinheiro', 0, 1, '2020-01-29 21:43:54'),
-(3, 'Boleto bancário', 0, 1, '2020-10-19 18:52:36');
+(3, 'Boleto bancário', 0, 1, '2020-10-19 18:52:36'),
+(5, 'Cartão de débito', 0, 1, '2020-11-04 22:06:27');
 
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `fornecedores`
---
--- Criação: 13-Out-2020 às 12:04
 --
 
 CREATE TABLE `fornecedores` (
@@ -213,8 +202,6 @@ INSERT INTO `fornecedores` (`fornecedor_id`, `fornecedor_data_cadastro`, `fornec
 --
 -- Estrutura da tabela `groups`
 --
--- Criação: 10-Out-2020 às 01:31
---
 
 CREATE TABLE `groups` (
   `id` mediumint(8) UNSIGNED NOT NULL,
@@ -235,8 +222,6 @@ INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 --
 -- Estrutura da tabela `login_attempts`
 --
--- Criação: 10-Out-2020 às 01:31
---
 
 CREATE TABLE `login_attempts` (
   `id` int(11) UNSIGNED NOT NULL,
@@ -249,8 +234,6 @@ CREATE TABLE `login_attempts` (
 
 --
 -- Estrutura da tabela `marcas`
---
--- Criação: 14-Out-2020 às 02:51
 --
 
 CREATE TABLE `marcas` (
@@ -275,9 +258,6 @@ INSERT INTO `marcas` (`marca_id`, `marca_nome`, `marca_ativa`, `marca_data_alter
 --
 -- Estrutura da tabela `ordem_tem_servicos`
 --
--- Criação: 19-Out-2020 às 19:45
--- Última actualização: 20-Out-2020 às 19:44
---
 
 CREATE TABLE `ordem_tem_servicos` (
   `ordem_ts_id` int(11) NOT NULL,
@@ -294,17 +274,17 @@ CREATE TABLE `ordem_tem_servicos` (
 --
 
 INSERT INTO `ordem_tem_servicos` (`ordem_ts_id`, `ordem_ts_id_servico`, `ordem_ts_id_ordem_servico`, `ordem_ts_quantidade`, `ordem_ts_valor_unitario`, `ordem_ts_valor_desconto`, `ordem_ts_valor_total`) VALUES
-(67, 4, 2, 1, ' 80.00', '0 ', ' 80.00'),
-(69, 1, 3, 3, ' 50.00', '0 ', ' 150.00'),
-(70, 2, 1, 3, ' 80.00', '3 ', ' 232.80');
+(76, 5, 12, 2, ' 25.50', '0 ', ' 51.00'),
+(78, 5, 11, 1, ' 25.50', '0 ', ' 25.50'),
+(80, 1, 3, 3, ' 50.00', '0 ', ' 150.00'),
+(81, 4, 2, 1, ' 80.00', '0 ', ' 80.00'),
+(88, 2, 1, 3, ' 80.00', '3 ', ' 232.80'),
+(92, 4, 13, 1, ' 80.00', '0 ', ' 80.00');
 
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `ordens_servicos`
---
--- Criação: 19-Out-2020 às 19:45
--- Última actualização: 20-Out-2020 às 19:44
 --
 
 CREATE TABLE `ordens_servicos` (
@@ -330,17 +310,16 @@ CREATE TABLE `ordens_servicos` (
 --
 
 INSERT INTO `ordens_servicos` (`ordem_servico_id`, `ordem_servico_forma_pagamento_id`, `ordem_servico_cliente_id`, `ordem_servico_data_emissao`, `ordem_servico_data_conclusao`, `ordem_servico_equipamento`, `ordem_servico_marca_equipamento`, `ordem_servico_modelo_equipamento`, `ordem_servico_acessorios`, `ordem_servico_defeito`, `ordem_servico_valor_desconto`, `ordem_servico_valor_total`, `ordem_servico_status`, `ordem_servico_obs`, `ordem_servico_data_alteracao`) VALUES
-(1, 2, 7, '2020-02-14 20:30:35', NULL, 'Fone de ouvidoF', 'AwellF', 'AV1801F', 'Mouse e carregadorF', 'Não sai aúdio no lado esquerdoF', 'R$ 7.20', '232.80', 0, 'testeF', '2020-10-20 19:44:24'),
-(2, 2, 9, '2020-02-14 20:48:53', NULL, 'Notebook', 'Dell', 'FAVE7638', 'Carregador', 'Não liga', 'R$ 0.00', '80.00', 0, 'testeF', '2020-10-20 19:17:54'),
-(3, 2, 3, '2020-02-17 23:53:26', NULL, 'Fone de ouvidoFG', 'AwellFG', 'AV1801FG', 'Mouse e carregadorFG', 'Não sai aúdio no lado esquerdoFG', 'R$ 0.00', '150.00', 0, 'testeFG', '2020-10-20 19:20:21');
+(1, 3, 7, '2020-02-14 20:30:35', NULL, 'Fone de ouvidoF', 'AwellF', 'AV1801F', 'Mouse e carregadorF', 'Não sai aúdio no lado esquerdoF', 'R$ 7.20', '232.80', 1, 'testeF', '2020-10-26 20:04:52'),
+(2, 2, 9, '2020-02-14 20:48:53', NULL, 'Notebook', 'Dell', 'FAVE7638', 'Carregador', 'Não liga', 'R$ 0.00', '80.00', 1, 'testeF', '2020-10-26 19:41:17'),
+(3, 2, 3, '2020-02-17 23:53:26', NULL, 'Fone de ouvidoFG', 'AwellFG', 'AV1801FG', 'Mouse e carregadorFG', 'Não sai aúdio no lado esquerdoFG', 'R$ 0.00', '150.00', 1, 'testeFG', '2020-10-26 19:41:06'),
+(11, 1, 10, '2020-10-21 17:12:24', NULL, 'Notebook', 'Positivo', 'TR6273', 'Carregador', 'Não aparece imagem', 'R$ 0.00', '25.50', 1, '', '2020-10-21 17:58:08'),
+(13, 3, 9, '2020-10-26 20:06:37', NULL, 'Desktop', 'AOC', 'HDG587', 'Cabo de energia', 'Formatar', 'R$ 0.00', '80.00', 1, 'teste', '2020-10-26 20:28:11');
 
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `produtos`
---
--- Criação: 15-Out-2020 às 18:15
--- Última actualização: 19-Out-2020 às 11:47
 --
 
 CREATE TABLE `produtos` (
@@ -366,15 +345,14 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`produto_id`, `produto_codigo`, `produto_data_cadastro`, `produto_categoria_id`, `produto_marca_id`, `produto_fornecedor_id`, `produto_descricao`, `produto_unidade`, `produto_preco_custo`, `produto_preco_venda`, `produto_estoque_minimo`, `produto_qtde_estoque`, `produto_ativo`, `produto_obs`, `produto_data_alteracao`) VALUES
-(7, '18379264', NULL, 4, 6, 3, 'Smart tv 40', 'UN', '1.810,00', '2.590,00', '5', '10', 1, 'teste', '2020-10-16 15:46:52');
+(7, '18379264', NULL, 4, 6, 3, 'Smart tv 40', 'UN', '1.810,00', '2.590,00', '5', '5', 1, 'teste', '2020-10-23 20:06:09'),
+(9, '01589734', NULL, 3, 1, 2, 'Notebook gamer', 'UN', '1.300,00', '2.000,00', '2', '1', 1, '', '2020-10-23 18:37:38'),
+(10, '38129765', NULL, 3, 5, 2, 'DVD Automotivo', 'UN', '1.500,00', '2.100,00', '1', '6', 1, '', '2020-11-04 03:10:40');
 
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `servicos`
---
--- Criação: 14-Out-2020 às 01:21
--- Última actualização: 20-Out-2020 às 17:23
 --
 
 CREATE TABLE `servicos` (
@@ -393,14 +371,14 @@ CREATE TABLE `servicos` (
 INSERT INTO `servicos` (`servico_id`, `servico_nome`, `servico_preco`, `servico_descricao`, `servico_ativo`, `servico_data_alteracao`) VALUES
 (1, 'Limpeza gerall', '50,00', 'Limpeza Geral', 1, '2020-10-20 17:23:41'),
 (2, 'Solda elétrica', '80,00', 'Solda elétrica', 1, '2020-02-13 22:10:21'),
-(4, 'Formatção de Computador', '80,00', 'Formatação e instalação de programas padrão.', 1, '2020-10-14 02:32:34');
+(4, 'Formatção de Computador', '80,00', 'Formatação e instalação de programas padrão.', 1, '2020-10-14 02:32:34'),
+(5, 'Trocas placa mãe', '25,50', 'Troca de placa mãe', 1, '2020-10-21 17:10:22'),
+(6, 'Instalação de programas', '15,00', 'Instalação software em geral', 1, '2020-10-21 17:07:22');
 
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `sistema`
---
--- Criação: 11-Out-2020 às 18:32
 --
 
 CREATE TABLE `sistema` (
@@ -416,6 +394,7 @@ CREATE TABLE `sistema` (
   `sistema_cep` varchar(25) DEFAULT NULL,
   `sistema_endereco` varchar(145) DEFAULT NULL,
   `sistema_numero` varchar(25) DEFAULT NULL,
+  `sistema_bairro` varchar(45) NOT NULL,
   `sistema_cidade` varchar(45) DEFAULT NULL,
   `sistema_estado` varchar(2) DEFAULT NULL,
   `sistema_txt_ordem_servico` tinytext DEFAULT NULL,
@@ -426,16 +405,13 @@ CREATE TABLE `sistema` (
 -- Extraindo dados da tabela `sistema`
 --
 
-INSERT INTO `sistema` (`sistema_id`, `sistema_razao_social`, `sistema_nome_fantasia`, `sistema_cnpj`, `sistema_ie`, `sistema_telefone_fixo`, `sistema_telefone_movel`, `sistema_email`, `sistema_site_url`, `sistema_cep`, `sistema_endereco`, `sistema_numero`, `sistema_cidade`, `sistema_estado`, `sistema_txt_ordem_servico`, `sistema_data_alteracao`) VALUES
-(1, 'System Ordem Incc', 'TellNett', '30.235.254/0001-51', '476.875.136.289', '(18) 3281-5432', '(18) 99185-2548', 'farlefernado@gmail.com.br', 'https://farleyfernando.com.br', '19470-009', 'R. Rio de Janeiroo', '34-29', 'Presidente Epitácioo', 'PR', 'Temos os melhores produtos!!!', '2020-10-12 00:02:12');
+INSERT INTO `sistema` (`sistema_id`, `sistema_razao_social`, `sistema_nome_fantasia`, `sistema_cnpj`, `sistema_ie`, `sistema_telefone_fixo`, `sistema_telefone_movel`, `sistema_email`, `sistema_site_url`, `sistema_cep`, `sistema_endereco`, `sistema_numero`, `sistema_bairro`, `sistema_cidade`, `sistema_estado`, `sistema_txt_ordem_servico`, `sistema_data_alteracao`) VALUES
+(1, 'A&amp;C ME', 'Cat&#039;s Moda', '30.235.254/0001-51', '476.875.136.289', '(18) 3281-5432', '(18) 99185-2548', 'farlefernado@gmail.com', 'https://farleyfernando.com.br', '19470-000', 'R. Rio de Janeiro', '34-29', 'Jd Real II', 'Presidente Epitácio', 'SP', 'Temos os melhores produtos!!!', '2020-10-21 12:40:37');
 
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `users`
---
--- Criação: 10-Out-2020 às 01:31
--- Última actualização: 20-Out-2020 às 14:17
 --
 
 CREATE TABLE `users` (
@@ -465,17 +441,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$1aCih8HbVNrKUtHeYLxpp.pXylYey74H2vQFz9/WLpOLk2MkS5WFG', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1602436936, 1, 'admin', 'instrator', 'ADMIN', '(18) 99125-4885'),
-(2, '::1', 'aninnha', '$2y$10$o9PJpYcnSSFPdLGG.pT51.IFird56DeqLGu5MiHxR.5iyvXOYlMB6', 'aninnha_30@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1602424222, NULL, 0, 'ANA PAULA', 'DA MOTA SOUZA', NULL, NULL),
-(6, '::1', 'ffsantos', '$2y$12$hglY67w1yZGhwT2nByDdYub.KmuzHwQZ7s7bWBZEIs7liii0W2Vqm', 'farleyfernando@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1602424602, 1603203449, 1, 'FARLEY', 'FERNANDO DOS SANTOS', NULL, '(18) 99185-2548'),
-(8, '::1', 'aninnha30', '$2y$10$XTIuw3qpbN9W2VP48NjoAOLtj4i1kRyKK0zbcLi7cF1xveNBzkowG', 'aninnha_30@hotmail.com.br', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1602425945, NULL, 0, 'ANA PAULA', 'SOUZA', NULL, '(18) 98191-3654');
+(1, '127.0.0.1', 'administrator', '$2y$12$1aCih8HbVNrKUtHeYLxpp.pXylYey74H2vQFz9/WLpOLk2MkS5WFG', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1603929604, 1, 'admin', 'instrator', 'ADMIN', '(18) 99125-4885'),
+(2, '::1', 'aninnha', '$2y$10$lXoxPISuPLrI7ETLgv07BOOZCxht2f4FdJ2Dz5kKIk7YFWMji7PfG', 'aninnha_30@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1602424222, NULL, 1, 'ANA PAULA', 'DA MOTA SOUZA', NULL, '(18) 98191-3652'),
+(6, '::1', 'ffsantos', '$2y$12$hglY67w1yZGhwT2nByDdYub.KmuzHwQZ7s7bWBZEIs7liii0W2Vqm', 'farleyfernando@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1602424602, 1604504977, 1, 'FARLEY', 'FERNANDO DOS SANTOS', 'ADMIN', '(18) 99185-2548'),
+(8, '::1', 'aninnha30', '$2y$10$XTIuw3qpbN9W2VP48NjoAOLtj4i1kRyKK0zbcLi7cF1xveNBzkowG', 'aninnha_30@hotmail.com.br', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1602425945, NULL, 0, 'ANA PAULA', 'SOUZA', NULL, '(18) 98191-3654'),
+(9, '::1', 'rafa', '$2y$10$8AUE0PumLGJ/ViuLHu90Wu97xny/HqWnMa9RAVi/0w07PYsjoug3W', 'rafael@uol.com.br', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1603929679, 1604511840, 1, 'Rafael', 'dos Santos', NULL, '(18) 95423-1532');
 
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `users_groups`
---
--- Criação: 10-Out-2020 às 01:31
 --
 
 CREATE TABLE `users_groups` (
@@ -492,14 +467,69 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (12, 1, 1),
 (13, 2, 2),
 (18, 6, 1),
-(17, 8, 2);
+(17, 8, 2),
+(23, 9, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `vendas`
+--
+
+CREATE TABLE `vendas` (
+  `venda_id` int(11) NOT NULL,
+  `venda_cliente_id` int(11) DEFAULT NULL,
+  `venda_forma_pagamento_id` int(11) DEFAULT NULL,
+  `venda_vendedor_id` int(11) DEFAULT NULL,
+  `venda_tipo` tinyint(1) DEFAULT NULL,
+  `venda_data_emissao` timestamp NULL DEFAULT current_timestamp(),
+  `venda_valor_desconto` varchar(25) DEFAULT NULL,
+  `venda_valor_total` varchar(25) DEFAULT NULL,
+  `venda_data_alteracao` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `vendas`
+--
+
+INSERT INTO `vendas` (`venda_id`, `venda_cliente_id`, `venda_forma_pagamento_id`, `venda_vendedor_id`, `venda_tipo`, `venda_data_emissao`, `venda_valor_desconto`, `venda_valor_total`, `venda_data_alteracao`) VALUES
+(1, 10, 1, 4, 1, '2020-10-22 21:44:55', 'R$ 0.00', '5,180.00', '2020-10-23 14:17:50'),
+(2, 7, 3, 1, 2, '2020-10-23 16:08:25', 'R$ 0.00', '2,000.00', NULL),
+(8, 9, 3, 4, 2, '2020-10-23 19:49:12', 'R$ 0.00', '2,590.00', NULL),
+(9, 3, 2, 1, 1, '2020-10-23 20:06:09', 'R$ 233.10', '7,536.90', NULL),
+(10, 7, 3, 4, 1, '2020-11-04 03:10:40', 'R$ 0.00', '29,400.00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `venda_produtos`
+--
+
+CREATE TABLE `venda_produtos` (
+  `id_venda_produtos` int(11) NOT NULL,
+  `venda_produto_id_venda` int(11) DEFAULT NULL,
+  `venda_produto_id_produto` int(11) DEFAULT NULL,
+  `venda_produto_quantidade` varchar(15) DEFAULT NULL,
+  `venda_produto_valor_unitario` varchar(20) DEFAULT NULL,
+  `venda_produto_desconto` varchar(10) DEFAULT NULL,
+  `venda_produto_valor_total` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `venda_produtos`
+--
+
+INSERT INTO `venda_produtos` (`id_venda_produtos`, `venda_produto_id_venda`, `venda_produto_id_produto`, `venda_produto_quantidade`, `venda_produto_valor_unitario`, `venda_produto_desconto`, `venda_produto_valor_total`) VALUES
+(5, 1, 7, '2', ' 2,590.00', '0 ', ' 5180.00'),
+(6, 2, 9, '1', ' 2,000.00', '0 ', ' 2000.00'),
+(7, 8, 7, '1', ' 2,590.00', '0 ', ' 2590.00'),
+(8, 9, 7, '3', ' 2,590.00', '3 ', ' 7536.90'),
+(9, 10, 10, '14', ' 2,100.00', '0 ', ' 29400.00');
 
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `vendedores`
---
--- Criação: 13-Out-2020 às 23:41
 --
 
 CREATE TABLE `vendedores` (
@@ -651,6 +681,23 @@ ALTER TABLE `users_groups`
   ADD KEY `fk_users_groups_groups1_idx` (`group_id`);
 
 --
+-- Índices para tabela `vendas`
+--
+ALTER TABLE `vendas`
+  ADD PRIMARY KEY (`venda_id`),
+  ADD KEY `fk_venda_cliente_id` (`venda_cliente_id`),
+  ADD KEY `fk_venda_forma_pagto_id` (`venda_forma_pagamento_id`),
+  ADD KEY `fk_venda_vendedor_id` (`venda_vendedor_id`);
+
+--
+-- Índices para tabela `venda_produtos`
+--
+ALTER TABLE `venda_produtos`
+  ADD PRIMARY KEY (`id_venda_produtos`),
+  ADD KEY `fk_venda_produtos_id_produto` (`venda_produto_id_produto`),
+  ADD KEY `fk_venda_produtos_id_venda` (`venda_produto_id_venda`);
+
+--
 -- Índices para tabela `vendedores`
 --
 ALTER TABLE `vendedores`
@@ -670,25 +717,25 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `cliente_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `cliente_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `contas_pagar`
 --
 ALTER TABLE `contas_pagar`
-  MODIFY `conta_pagar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `conta_pagar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `contas_receber`
 --
 ALTER TABLE `contas_receber`
-  MODIFY `conta_receber_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `conta_receber_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `formas_pagamentos`
 --
 ALTER TABLE `formas_pagamentos`
-  MODIFY `forma_pagamento_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `forma_pagamento_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `fornecedores`
@@ -706,7 +753,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT de tabela `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de tabela `marcas`
@@ -718,25 +765,25 @@ ALTER TABLE `marcas`
 -- AUTO_INCREMENT de tabela `ordem_tem_servicos`
 --
 ALTER TABLE `ordem_tem_servicos`
-  MODIFY `ordem_ts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `ordem_ts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT de tabela `ordens_servicos`
 --
 ALTER TABLE `ordens_servicos`
-  MODIFY `ordem_servico_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ordem_servico_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `produto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `produto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `servicos`
 --
 ALTER TABLE `servicos`
-  MODIFY `servico_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `servico_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `sistema`
@@ -748,13 +795,25 @@ ALTER TABLE `sistema`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT de tabela `vendas`
+--
+ALTER TABLE `vendas`
+  MODIFY `venda_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de tabela `venda_produtos`
+--
+ALTER TABLE `venda_produtos`
+  MODIFY `id_venda_produtos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `vendedores`
@@ -778,6 +837,21 @@ ALTER TABLE `contas_pagar`
 ALTER TABLE `users_groups`
   ADD CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `vendas`
+--
+ALTER TABLE `vendas`
+  ADD CONSTRAINT `fk_venda_cliente_id` FOREIGN KEY (`venda_cliente_id`) REFERENCES `clientes` (`cliente_id`),
+  ADD CONSTRAINT `fk_venda_forma_pagto_id` FOREIGN KEY (`venda_forma_pagamento_id`) REFERENCES `formas_pagamentos` (`forma_pagamento_id`),
+  ADD CONSTRAINT `fk_venda_vendedor_id` FOREIGN KEY (`venda_vendedor_id`) REFERENCES `vendedores` (`vendedor_id`);
+
+--
+-- Limitadores para a tabela `venda_produtos`
+--
+ALTER TABLE `venda_produtos`
+  ADD CONSTRAINT `fk_venda_produtos_id_produto` FOREIGN KEY (`venda_produto_id_produto`) REFERENCES `produtos` (`produto_id`),
+  ADD CONSTRAINT `fk_venda_produtos_id_venda` FOREIGN KEY (`venda_produto_id_venda`) REFERENCES `vendas` (`venda_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

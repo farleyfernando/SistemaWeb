@@ -54,8 +54,8 @@
                     <tr>
                       <th>#</th>
                       <th>Usuário</th>
-                      <th >E-mail</th>
-                      <th >Perfil</th>
+                      <th>E-mail</th>
+                      <th>Perfil</th>
                       <th class="text-center">Ativo</th>
                       <th class="text-center no-sort">Ações</th>
                     </tr>

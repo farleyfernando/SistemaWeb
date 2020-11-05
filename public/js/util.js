@@ -1,4 +1,7 @@
 const BASE_URL = "http://localhost/ordem-servico/";
+//const BASE_URL = "https://solutionsistemas.000webhostapp.com/";
+
+
 
 
 $(function() {

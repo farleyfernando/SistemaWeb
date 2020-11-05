@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
 
         </div>
-        <div class="sidebar-brand-text"><img src="<?php echo base_url('public/img/solutionn.png')?>"></img></div>
+        <div class="sidebar-brand-text"><img src="<?php echo base_url('public/img/smartcel.png')?>"></img></div>
       </a>
       
 

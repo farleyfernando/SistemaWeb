@@ -26,7 +26,7 @@ date_default_timezone_set('America/Sao_Paulo');
 |
 */
 $config['base_url'] = 'http://localhost/ordem-servico/';
-
+//$config['base_url'] = 'https://solutionsistemas.000webhostapp.com/';
 /*
 |--------------------------------------------------------------------------
 | Index File

@@ -26,6 +26,12 @@ class Login extends CI_Controller
         } else {
 
             $usuario = $this->core_model->get_by_id('users', array('email' => $identity));
+
+            if ($this->core_model->get_by_id('users', array('email' => $identity)) == FALSE){
+            
+                $this->session->set_flashdata('info', 'E-mail não localizado !!!'); /// caso o e-mail não exista
+                  redirect('login');
+            }
  
             if($usuario->active == 0){
                 $this->session->set_flashdata('info', 'Sua conta está inativa !!!'); /// coloque o texto que achar melhor
