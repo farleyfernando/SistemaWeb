@@ -71,8 +71,8 @@
                       <td class="text-center"><?php echo ($servico->servico_ativo == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-secondary btn-sm">Não</span>') ?></td> 
 
                       <td class="text-center pr-1">
-                        <a title="Editar Serviços" href="<?php echo base_url('servicos/editar/'.$servico->servico_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
-                        <a title="Excluir Usuário"href="javascript(void)" data-toggle="modal" data-target="#servico-<?php echo $servico->servico_id; ?>"class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>
+                        <a title="Editar Serviços" href="<?php echo base_url('servicos/editar/'.$servico->servico_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                        <a title="Excluir Usuário"href="javascript(void)" data-toggle="modal" data-target="#servico-<?php echo $servico->servico_id; ?>"class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                       </td> 
                       
                     </tr> 

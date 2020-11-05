@@ -25,6 +25,13 @@ class Produtos extends CI_Controller
             'scripts' => ['vendor/mask/jquery.mask.min.js',
                           'vendor/datatables/jquery.dataTables.min.js',
                           'vendor/datatables/dataTables.bootstrap4.min.js',
+
+                          //js para export tabela
+                          'vendor/datatables/export/dataTables.buttons.min.js',
+                          'vendor/datatables/export/pdfmake.min.js',
+                          'vendor/datatables/export/vfs_fonts.js',
+                          'vendor/datatables/export/buttons.html5.min.js',
+                          //js para export tabela fim
                           'vendor/datatables/app.js',
                           'vendor/mask/app.js'],
 

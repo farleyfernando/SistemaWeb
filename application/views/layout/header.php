@@ -9,7 +9,9 @@
   <meta name="description" content="">
   <meta name="Farley Fernando" content="">
 
-  <?php echo (isset($titulo) ? '<title>Cats Moda | '.$titulo.'</title>' : '<title>Cat"s Moda</title>') ?>
+  <link rel="icon" href="<?php echo base_url('public/img/icone-solution.png') ?>" type="image/x-icon">
+
+  <?php echo (isset($titulo) ? '<title>Solution | '.$titulo.'</title>' : '<title>Solution</title>') ?>
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url('public/vendor/fontawesome-free/css/all.min.css');?>" rel="stylesheet" type="text/css">
